@@ -197,24 +197,16 @@ class NumberController: UIViewController , UITextFieldDelegate  {
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
         ]
 
-        // Set the delegate to handle link taps
         termsAndPrivacyTextView.delegate = self
     }
 }
 
 extension NumberController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        // Handle link taps here
+
         if URL.scheme == "terms" {
-            // Handle tap on "İstifadə Qaydaları"
-            // Navigate to the screen about terms
-            // Example: let termsController = TermsController()
-            // navigationController?.pushViewController(termsController, animated: true)
+   
         } else if URL.scheme == "privacy" {
-            // Handle tap on "Məxfilik Siyasəti"
-            // Navigate to the screen about privacy policy
-            // Example: let privacyController = PrivacyController()
-            // navigationController?.pushViewController(privacyController, animated: true)
         }
 
         return false

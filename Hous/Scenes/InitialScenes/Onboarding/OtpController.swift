@@ -4,7 +4,11 @@ import SnapKit
 class OtpController: UIViewController {
     
     var mobileNumber: String?
-    var enteredOTP = ""
+    var enteredOTP = "" {
+            didSet {
+                updateNextButtonState()
+            }
+        }
     
     let descLabel: UILabel = {
         let label = UILabel()
@@ -18,7 +22,6 @@ class OtpController: UIViewController {
     
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .red
         stackView.axis = .horizontal
         stackView.spacing = 8
         return stackView
@@ -29,7 +32,6 @@ class OtpController: UIViewController {
         view.layer.borderWidth = 1.0
         view.layer.borderColor = UIColor.gray.cgColor
         view.layer.cornerRadius = 10
-        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -53,6 +55,7 @@ class OtpController: UIViewController {
         let button = ReusableButton(title: "Təsdiqlə", color: .mainBlueColor) {
             self.goToAccountScreen()
         }
+        button.isEnabled = false
         return button
     }()
     
@@ -104,9 +107,14 @@ class OtpController: UIViewController {
         }
     }
     
+    private func updateNextButtonState() {
+        
+        nextButton.isEnabled = enteredOTP.count == 4
+        nextButton.backgroundColor = enteredOTP.count == 4 ? .mainBlueColor : .gray
+    }
+    
     func createDotContainer() -> UIView {
         let dotContainer = UIView()
-        dotContainer.backgroundColor = .orange
         
         let dotLabel: UILabel = {
             let label = UILabel()
@@ -118,22 +126,21 @@ class OtpController: UIViewController {
         
         let textField: UITextField = {
             let textField = UITextField()
-            textField.backgroundColor = .systemPink
             //textField.isSecureTextEntry = true
             textField.textAlignment = .center
             textField.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             textField.textColor = .black
             //textField.placeholder = "●"
             textField.keyboardType = .numberPad
-            textField.frame = .init(x: 0, y: 0, width: view.frame.width, height: 32)
-            textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-            //            textField.delegate = self
+            textField.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
+            textField.delegate = self
             return textField
         }()
+     
         
         dotContainer.addSubview(dotLabel)
         dotLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.center.equalToSuperview()
         }
         
         dotContainer.addSubview(textField)
@@ -143,16 +150,19 @@ class OtpController: UIViewController {
         
         return dotContainer
     }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldEditingDidBegin(_ textField: UITextField) {
         if let dotLabel = (textField.superview?.subviews.compactMap { $0 as? UILabel })?.first {
-            dotLabel.isHidden = textField.text?.isEmpty ?? true
-            dotLabel.text = textField.text
+            dotLabel.isHidden = true
         }
+    }
+    
+//    @objc func textFieldDidChange(_ textField: UITextField) {
+//        if let dotLabel = (textField.superview?.subviews.compactMap { $0 as? UILabel })?.first {
+//            dotLabel.isHidden = textField.text?.isEmpty ?? true
+//            dotLabel.text = textField.text
+//        }
         
-        if let text = textField.text, !text.isEmpty {
-            textField.becomeFirstResponder()
-        }
+       
         
 //        if let nextTextField = (stackView.arrangedSubviews.compactMap { ($0).subviews.compactMap { ($0 as? UITextField) } }.joined()).first(where: { $0 != textField }) {
 //            if let text = textField.text, !text.isEmpty {
@@ -161,45 +171,51 @@ class OtpController: UIViewController {
 //        } else {
 //            textField.resignFirstResponder()
 //        }
+    
     }
     
     
     
-    
-    //
-    //extension OtpController: UITextFieldDelegate {
-    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    //        guard textField.text != nil else { return false }
-    //
-    //        if string.isEmpty {
-    //            textField.text = ""
-    //        } else {
-    //            textField.text = string
-    //
-    //            if let stackView./*arrangedSubviews*/ as
-    //
-    //            if let dotLabel = (textField.superview?.subviews.compactMap { $0 as? UILabel })?.first {
-    ////                dotLabel.text = string
-    //            }
-    //
-    //            if let nextTextField = (stackView.arrangedSubviews.compactMap { ($0).subviews.compactMap { ($0 as? UITextField) } }.joined()).first(where: { $0 != textField }) {
-    //                nextTextField.becomeFirstResponder()
-    //            } else {
-    //                textField.resignFirstResponder()
-    //            }
-    //        }
-    //
-    //        enteredOTP = stackView.arrangedSubviews.compactMap { ($0).subviews.compactMap { ($0 as? UITextField)?.text }.joined() }.joined()
-    //
-    //        return false
-    //    }
-    //}
-}
-
 extension OtpController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            let leftPart = text.substring(to: <#T##String.Index#>)
+        guard let currentText = textField.text else { return false }
+        
+        if string.isEmpty {
+            textField.text = ""
+        } else {
+            let newText = currentText + string
+            textField.text = newText
+            
+            if let dotLabel = (textField.superview?.subviews.compactMap { $0 as? UILabel })?.first {
+                dotLabel.text = string
+            }
+            
+            if newText.count >= 1, let nextTextField = findNextTextField(after: textField) {
+                nextTextField.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+            }
         }
+        
+        enteredOTP = stackView.arrangedSubviews.compactMap {
+            ($0.subviews.compactMap { ($0 as? UITextField)?.text ?? "" }).joined()
+        }.joined()
+        
+        return false
     }
+    
+    func findNextTextField(after textField: UITextField) -> UITextField? {
+        guard let index = stackView.arrangedSubviews.firstIndex(where: { ($0).subviews.contains(textField) }),
+              index < stackView.arrangedSubviews.count - 1 else {
+            nextButtonAction()
+            return nil
+        }
+        
+        let nextContainer = stackView.arrangedSubviews[index + 1]
+        return nextContainer.subviews.compactMap { $0 as? UITextField }.first
+    }
+    
+    private func nextButtonAction() {
+            goToAccountScreen()
+        }
 }
