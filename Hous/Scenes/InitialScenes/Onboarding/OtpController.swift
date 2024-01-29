@@ -35,9 +35,20 @@ class OtpController: UIViewController {
         return view
     }()
     
+    let tryAgainButton: UIButton = {
+        let button = UIButton()
+        button.setTitle( "Yeni kod göndər", for: .normal)
+        button.setTitleColor(.mainBlue, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        nextButton.isEnabled = false
+        nextButton.backgroundColor = .gray
         
         setupUI()
         
@@ -89,7 +100,7 @@ class OtpController: UIViewController {
         
         containerView.addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32))
         }
         
         stackView.distribution = .fillEqually
@@ -104,6 +115,14 @@ class OtpController: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(containerView.snp.bottom).offset(24)
+        }
+        
+        view.addSubview(tryAgainButton)
+        tryAgainButton.snp.makeConstraints { make in
+            make.top.equalTo(nextButton.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(120)
+            make.height.equalTo(20)
         }
     }
     

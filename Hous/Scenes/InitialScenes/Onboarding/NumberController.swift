@@ -6,7 +6,7 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.text = "Təsdiq üçün mobil nömrənizə birdəfəlik kod göndəriləcək."
+        label.text = "Giriş üçün nömrənizə birdəfəlik kod göndəriləcək."
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 0
@@ -97,7 +97,7 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     
     func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Giriş və ya qeydiyyat"
+        navigationItem.title = "Mobil nömrənizi daxil edin."
         navigationController?.navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -182,18 +182,19 @@ class NumberController: UIViewController , UITextFieldDelegate  {
 
         let text = "Giriş etməklə siz platformanın \(termsLink) və \(privacyLink) ilə razılaşırsınız."
         let attributedString = NSMutableAttributedString(string: text)
+        
 
         let termsRange = (text as NSString).range(of: termsLink)
         attributedString.addAttribute(.link, value: "terms://", range: termsRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: termsRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mainBlue, range: termsRange)
 
         let privacyRange = (text as NSString).range(of: privacyLink)
         attributedString.addAttribute(.link, value: "privacy://", range: privacyRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: privacyRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.mainBlue, range: privacyRange)
 
         termsAndPrivacyTextView.attributedText = attributedString
         termsAndPrivacyTextView.linkTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.blue,
+            NSAttributedString.Key.foregroundColor: UIColor.mainBlue,
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
         ]
 

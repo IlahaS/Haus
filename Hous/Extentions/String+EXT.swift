@@ -1,9 +1,3 @@
-//
-//  Strring+EXT.swift
-//  Hous
-//
-//  Created by Ilahe Samedova on 20.01.24.
-//
 
 import Foundation
 
@@ -13,7 +7,6 @@ extension String {
         var result = ""
         var index = numbers.startIndex // numbers iterator
 
-        // iterate over the mask characters until the iterator of numbers ends
         for ch in mask where index < numbers.endIndex {
             if ch == "X" {
                 // mask requires a number in this place, so take the next one

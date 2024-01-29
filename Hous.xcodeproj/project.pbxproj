@@ -11,8 +11,16 @@
 		38D20DC32B58013300ECF628 /* NumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC22B58013300ECF628 /* NumberController.swift */; };
 		38D20DC52B58014600ECF628 /* OtpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC42B58014600ECF628 /* OtpController.swift */; };
 		38D20DC82B59440D00ECF628 /* SkyFloatingLabelTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 38D20DC72B59440D00ECF628 /* SkyFloatingLabelTextField */; };
-		38D20DCA2B5BC1C600ECF628 /* Strring+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC92B5BC1C600ECF628 /* Strring+EXT.swift */; };
+		38D20DCA2B5BC1C600ECF628 /* String+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC92B5BC1C600ECF628 /* String+EXT.swift */; };
 		38D20DCC2B5C034600ECF628 /* SelectAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DCB2B5C034600ECF628 /* SelectAccountController.swift */; };
+		38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DCF2B65A38400ECF628 /* PersonalAccountController.swift */; };
+		38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DD12B65A39700ECF628 /* AgentAccountController.swift */; };
+		38D20DD42B66D13B00ECF628 /* PersonalPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */; };
+		38D20DD62B66D14B00ECF628 /* AgentPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DD52B66D14B00ECF628 /* AgentPhotoController.swift */; };
+		38D20DD82B66F64300ECF628 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DD72B66F64300ECF628 /* TabViewController.swift */; };
+		38D20DDF2B66F81C00ECF628 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DDE2B66F81C00ECF628 /* HomeController.swift */; };
+		38D20DE12B66F82800ECF628 /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DE02B66F82800ECF628 /* DiscoverController.swift */; };
+		38D20DE32B66F83300ECF628 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DE22B66F83300ECF628 /* ProfileController.swift */; };
 		38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351A2B51756B00E9DA40 /* AppDelegate.swift */; };
 		38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */; };
 		38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351E2B51756B00E9DA40 /* FirstController.swift */; };
@@ -52,8 +60,16 @@
 		38D20DC02B5533AE00ECF628 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		38D20DC22B58013300ECF628 /* NumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberController.swift; sourceTree = "<group>"; };
 		38D20DC42B58014600ECF628 /* OtpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpController.swift; sourceTree = "<group>"; };
-		38D20DC92B5BC1C600ECF628 /* Strring+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strring+EXT.swift"; sourceTree = "<group>"; };
+		38D20DC92B5BC1C600ECF628 /* String+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EXT.swift"; sourceTree = "<group>"; };
 		38D20DCB2B5C034600ECF628 /* SelectAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountController.swift; sourceTree = "<group>"; };
+		38D20DCF2B65A38400ECF628 /* PersonalAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccountController.swift; sourceTree = "<group>"; };
+		38D20DD12B65A39700ECF628 /* AgentAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentAccountController.swift; sourceTree = "<group>"; };
+		38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPhotoController.swift; sourceTree = "<group>"; };
+		38D20DD52B66D14B00ECF628 /* AgentPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentPhotoController.swift; sourceTree = "<group>"; };
+		38D20DD72B66F64300ECF628 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		38D20DDE2B66F81C00ECF628 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		38D20DE02B66F82800ECF628 /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
+		38D20DE22B66F83300ECF628 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		38FB35172B51756B00E9DA40 /* Hous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FB351A2B51756B00E9DA40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,9 +123,51 @@
 			isa = PBXGroup;
 			children = (
 				38D20DC02B5533AE00ECF628 /* Extentions.swift */,
-				38D20DC92B5BC1C600ECF628 /* Strring+EXT.swift */,
+				38D20DC92B5BC1C600ECF628 /* String+EXT.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		38D20DCD2B659B6000ECF628 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DCF2B65A38400ECF628 /* PersonalAccountController.swift */,
+				38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		38D20DCE2B659B8400ECF628 /* Agency */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DD12B65A39700ECF628 /* AgentAccountController.swift */,
+				38D20DD52B66D14B00ECF628 /* AgentPhotoController.swift */,
+			);
+			path = Agency;
+			sourceTree = "<group>";
+		};
+		38D20DD92B66F7A200ECF628 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DDE2B66F81C00ECF628 /* HomeController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		38D20DDB2B66F7CA00ECF628 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DE02B66F82800ECF628 /* DiscoverController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		38D20DDD2B66F7DF00ECF628 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DE22B66F83300ECF628 /* ProfileController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		38FB350E2B51756B00E9DA40 = {
@@ -178,7 +236,13 @@
 			isa = PBXGroup;
 			children = (
 				38FB35642B52EFD900E9DA40 /* ReusableButton.swift */,
+				38D20DD72B66F64300ECF628 /* TabViewController.swift */,
 				38FB356A2B533AA600E9DA40 /* Onboarding */,
+				38D20DCD2B659B6000ECF628 /* Personal */,
+				38D20DCE2B659B8400ECF628 /* Agency */,
+				38D20DD92B66F7A200ECF628 /* Home */,
+				38D20DDB2B66F7CA00ECF628 /* Discover */,
+				38D20DDD2B66F7DF00ECF628 /* Profile */,
 			);
 			path = InitialScenes;
 			sourceTree = "<group>";
@@ -341,15 +405,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				38FB35252B51756B00E9DA40 /* Hous.xcdatamodeld in Sources */,
+				38D20DD42B66D13B00ECF628 /* PersonalPhotoController.swift in Sources */,
 				38FB35652B52EFD900E9DA40 /* ReusableButton.swift in Sources */,
+				38D20DD82B66F64300ECF628 /* TabViewController.swift in Sources */,
 				38D20DC12B5533AE00ECF628 /* Extentions.swift in Sources */,
+				38D20DE32B66F83300ECF628 /* ProfileController.swift in Sources */,
 				38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */,
-				38D20DCA2B5BC1C600ECF628 /* Strring+EXT.swift in Sources */,
+				38D20DCA2B5BC1C600ECF628 /* String+EXT.swift in Sources */,
 				38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */,
 				38D20DC52B58014600ECF628 /* OtpController.swift in Sources */,
 				38D20DC32B58013300ECF628 /* NumberController.swift in Sources */,
 				38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */,
+				38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */,
+				38D20DDF2B66F81C00ECF628 /* HomeController.swift in Sources */,
 				38D20DCC2B5C034600ECF628 /* SelectAccountController.swift in Sources */,
+				38D20DD62B66D14B00ECF628 /* AgentPhotoController.swift in Sources */,
+				38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */,
+				38D20DE12B66F82800ECF628 /* DiscoverController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
