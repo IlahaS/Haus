@@ -2,11 +2,13 @@
 
 import UIKit
 
-class PersonalPhotoController: UIViewController{
+class AgentPhotoController: UIViewController{
+    
+    var builder = UserBuilder()
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.text = "Özünüzə aid bir foto yükləyin. Bu, sizin yeni profil fotonuz olacaq."
+        label.text = "Agentliyi təsvir edən bir foto yükləyin. Bu, agentliyin yeni profil fotosu olacaq."
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 0
@@ -14,7 +16,6 @@ class PersonalPhotoController: UIViewController{
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
-    
     let personImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.backgroundColor = .grayColor2
@@ -32,7 +33,7 @@ class PersonalPhotoController: UIViewController{
             return imageView
         }()
     
-    let plusButton: UIButton = {
+    private lazy var plusButton: UIButton = {
             let button = UIButton(type: .system)
         button.backgroundColor = .mainBlueColor
         button.layer.cornerRadius = 20
@@ -61,7 +62,6 @@ class PersonalPhotoController: UIViewController{
         view.backgroundColor = .white
         setupUI()
     }
-    
     func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "3/3 Yeni hesab yaradın."
@@ -130,10 +130,9 @@ class PersonalPhotoController: UIViewController{
 
         present(alertController, animated: true, completion: nil)
     }
-
     
-    func goToAccountScreen() {
-        let vc = TabViewController()
-        navigationController?.pushViewController(vc, animated: true)
+    func goToAccountScreen(){
+        let scene = self.sceneDelegate
+        scene?.switchToTabViewController()
     }
 }

@@ -3,4 +3,69 @@
    uuid = "A0427659-F3A1-42D7-9639-9C9ABC5D5915"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC99CF37-6706-42EC-95F9-4CA05F727030"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hous/Scenes/InitialScenes/Personal/PersonalPhotoController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DC99CF37-6706-42EC-95F9-4CA05F727030 - d612a44f7c08cc02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hous.PersonalPhotoController.viewDidLoad() -&gt; ()"
+                  moduleName = "Hous"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Hous/Hous/Scenes/InitialScenes/Personal/PersonalPhotoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "DC99CF37-6706-42EC-95F9-4CA05F727030 - d612a44f7c08cc02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hous.PersonalPhotoController.viewDidLoad() -&gt; ()"
+                  moduleName = "Hous"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Hous/Hous/Scenes/InitialScenes/Personal/PersonalPhotoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "DC99CF37-6706-42EC-95F9-4CA05F727030 - d612a44f7c08cc23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hous.PersonalPhotoController.viewDidLoad() -&gt; ()"
+                  moduleName = "Hous"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Hous/Hous/Scenes/InitialScenes/Personal/PersonalPhotoController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

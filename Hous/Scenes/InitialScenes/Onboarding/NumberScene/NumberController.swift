@@ -4,6 +4,13 @@ import SkyFloatingLabelTextField
 
 class NumberController: UIViewController , UITextFieldDelegate  {
     
+    var viewModel: NumberViewModel?
+    
+    convenience init(viewModel: NumberViewModel) {
+            self.init()
+            self.viewModel = viewModel
+        }
+    
     let descLabel: UILabel = {
         let label = UILabel()
         label.text = "Giriş üçün nömrənizə birdəfəlik kod göndəriləcək."
@@ -78,6 +85,7 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        login()
         setupUI()
         mobileNumberTextField.delegate = self
         
@@ -88,11 +96,17 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     
     @objc func goToOTPScreen() {
         
-        let otpController = OtpController()
-        otpController.mobileNumber = mobileNumberTextField.text
-        mobileNumberTextField.tintColor = .black
-        
-        navigationController?.pushViewController(otpController, animated: true)
+        viewModel?.updateMobileNumber(mobileNumberTextField.text ?? "")
+                
+                let otpController = OtpController()
+        otpController.viewModel?.mobileNumber = mobileNumberTextField.text
+                
+                mobileNumberTextField.tintColor = .black
+                navigationController?.pushViewController(otpController, animated: true)
+    }
+    
+    func login() {
+        UserDefaults.standard.setValue(true, forKey: "loggedIn")
     }
     
     func setupUI() {
@@ -173,6 +187,9 @@ class NumberController: UIViewController , UITextFieldDelegate  {
         guard let text = textField.text else { return false }
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         textField.text = String.format(with: "XX XXX XX XX", phone: newString)
+        
+        viewModel?.updateMobileNumber(newString)
+        
         return false
     }
     

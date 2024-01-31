@@ -1,15 +1,9 @@
 import SnapKit
 import UIKit
 
-enum AccountType: Int, CaseIterable {
-    case personal
-    case agent
-}
-
 class SelectAccountController: UIViewController{
     
-    private var selectedAccountType: [AccountType] = [.personal, .agent]
-    private var selectedAccountIndex: Int?
+    var viewModel = SelectAccountViewModel()
     
     let descLabel: UILabel = {
         let label = UILabel()
@@ -99,30 +93,34 @@ class SelectAccountController: UIViewController{
         
     }
     private func toggleButtonState(for accountType: AccountType) {
-        guard let index = selectedAccountType.firstIndex(of: accountType) else {
+        guard let index = viewModel.selectedAccountType.firstIndex(of: accountType) else {
             return
         }
 
-        selectedAccountIndex = index
+        viewModel.selectedAccountIndex = index
         collectionView.reloadData()
         nextButton.isEnabled = true
     }
-
     
-    private func presentViewControllerFor(accountType: AccountType) {
+    
+    private func presentViewControllerFor(accountType: AccountType, builder: UserBuilder) {
         switch accountType {
         case .personal:
             let personalVC = PersonalAccountController()
+            personalVC.builder = builder
             navigationController?.pushViewController(personalVC, animated: true)
         case .agent:
             let agentVC = AgentAccountController()
+            agentVC.builder = builder
             navigationController?.pushViewController(agentVC, animated: true)
         }
     }
     
     func goToAccountScreen() {
-        if let selectedAccountIndex = selectedAccountIndex {
-            presentViewControllerFor(accountType: selectedAccountType[selectedAccountIndex])
+        if let selectedAccountIndex = viewModel.selectedAccountIndex {
+            let builder = viewModel.builder.withAccountType(viewModel.selectedAccountType[selectedAccountIndex])
+            
+            presentViewControllerFor(accountType: viewModel.selectedAccountType[selectedAccountIndex], builder: builder)
         }
     }
 }
@@ -137,7 +135,7 @@ extension SelectAccountController: UICollectionViewDelegateFlowLayout {
 
 extension SelectAccountController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedAccountType.count
+        return viewModel.selectedAccountType.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -145,8 +143,8 @@ extension SelectAccountController: UICollectionViewDelegate, UICollectionViewDat
             return UICollectionViewCell()
         }
         
-        let accountType = selectedAccountType[indexPath.item]
-        let isSelected = indexPath.item == selectedAccountIndex
+        let accountType = viewModel.selectedAccountType[indexPath.item]
+        let isSelected = indexPath.item == viewModel.selectedAccountIndex
         cell.configure(for: accountType, isSelected: isSelected)
         cell.backgroundColor = .grayColor2
         cell.layer.cornerRadius = 10

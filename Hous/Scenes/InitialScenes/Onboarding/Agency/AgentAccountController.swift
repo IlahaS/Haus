@@ -1,12 +1,13 @@
 
-
 import UIKit
 
-class PersonalAccountController: UIViewController{
+class AgentAccountController: UIViewController{
+    
+    var builder = UserBuilder()
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tam adınız və platformada istifadə edəcəyiniz istifadəçi adını daxil edin."
+        label.text = "Agentliyin e-poçt ünvanı adı, platformada istifadə edəcəyiniz istifadəçi adı və agentlik haqqında qısa məlumat daxil edin."
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 0
@@ -15,20 +16,39 @@ class PersonalAccountController: UIViewController{
         return label
     }()
     
-    let nameTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Adınız"
+        textField.placeholder = "E-poçt ünvanı"
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 10
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textField
     }()
     
-    let userNameTextField: UITextField = {
+    private lazy var nameOrAgencyTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Adınız/Agentlik adı"
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 10
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        return textField
+    }()
+    
+    private lazy var userNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "@istifadəçi adı"
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 10
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        return textField
+    }()
+    
+    private lazy var aboutTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Haqqında (məcburi deyil)"
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 10
+        textField.contentVerticalAlignment = .top
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textField
     }()
@@ -62,35 +82,58 @@ class PersonalAccountController: UIViewController{
             make.trailing.equalToSuperview().offset(-16)
         }
         
-        view.addSubview(nameTextField)
-        nameTextField.snp.makeConstraints { make in
+        view.addSubview(emailTextField)
+        emailTextField.snp.makeConstraints { make in
             make.top.equalTo(descLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(56)
+        }
+        
+        view.addSubview(nameOrAgencyTextField)
+        nameOrAgencyTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
         }
         
         view.addSubview(userNameTextField)
         userNameTextField.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(12)
+            make.top.equalTo(nameOrAgencyTextField.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
         }
         
+        view.addSubview(aboutTextField)
+        aboutTextField.snp.makeConstraints { make in
+            make.top.equalTo(userNameTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(124)
+        }
+        
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(userNameTextField.snp.bottom).offset(24)
+            make.top.equalTo(aboutTextField.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
         }
+        
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        nextButton.isEnabled = !(nameTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
+        
+        nextButton.isEnabled = !(emailTextField.text?.isEmpty ?? true) && !(nameOrAgencyTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
     }
     
     func goToAccountScreen() {
-        let vc = PersonalPhotoController()
+        let vc = AgentPhotoController()
+        let builder = builder
+            .withEmail(emailTextField.text ?? "")
+            .withAbout(aboutTextField.text ?? "")
+            .withName(nameOrAgencyTextField.text ?? "")
+            .withUsername(userNameTextField.text ?? "")
+        vc.builder = builder
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     
 }

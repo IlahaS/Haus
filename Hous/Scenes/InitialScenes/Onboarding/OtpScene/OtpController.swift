@@ -3,10 +3,11 @@ import SnapKit
 
 class OtpController: UIViewController {
     
-    var mobileNumber: String?
+    var viewModel = OtpViewModel()
+    
     var enteredOTP = "" {
-            didSet {
-                updateNextButtonState()
+        didSet {
+            updateNextButtonState()
             }
         }
     
@@ -52,7 +53,7 @@ class OtpController: UIViewController {
         
         setupUI()
         
-        if let mobileNumber = mobileNumber {
+        if let mobileNumber = viewModel?.mobileNumber {
             let attributedString = NSMutableAttributedString(string: "Kod \(mobileNumber) nömrəsinə göndəriləcək.")
             let range = (attributedString.string as NSString).range(of: mobileNumber)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: range)
@@ -72,6 +73,7 @@ class OtpController: UIViewController {
     
     @objc func goToAccountScreen(){
         let accountController = SelectAccountController()
+        accountController.viewModel.builder = viewModel.builder
         navigationController?.pushViewController(accountController, animated: true)
     }
     
@@ -124,6 +126,8 @@ class OtpController: UIViewController {
             make.width.equalTo(120)
             make.height.equalTo(20)
         }
+        
+        viewModel?.enteredOTP = enteredOTP
     }
     
     private func updateNextButtonState() {

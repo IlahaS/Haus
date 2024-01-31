@@ -2,11 +2,13 @@
 
 import UIKit
 
-class AgentPhotoController: UIViewController{
+class PersonalPhotoController: UIViewController{
+    
+    var builder = UserBuilder()
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.text = "Agentliyi təsvir edən bir foto yükləyin. Bu, agentliyin yeni profil fotosu olacaq."
+        label.text = "Özünüzə aid bir foto yükləyin. Bu, sizin yeni profil fotonuz olacaq."
         label.textAlignment = .center
         label.textColor = .gray
         label.numberOfLines = 0
@@ -14,6 +16,7 @@ class AgentPhotoController: UIViewController{
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
+    
     let personImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.backgroundColor = .grayColor2
@@ -31,7 +34,7 @@ class AgentPhotoController: UIViewController{
             return imageView
         }()
     
-    let plusButton: UIButton = {
+    private lazy var plusButton: UIButton = {
             let button = UIButton(type: .system)
         button.backgroundColor = .mainBlueColor
         button.layer.cornerRadius = 20
@@ -48,8 +51,10 @@ class AgentPhotoController: UIViewController{
         }()
     
     private lazy var nextButton: ReusableButton = {
-        let button = ReusableButton(title: "Davam et", color: .mainBlueColor) {
-            self.goToAccountScreen()
+        let button = ReusableButton(title: "Davam et", color: .mainBlueColor) { [weak self] in
+            if let self {
+                self.goToAccountScreen()
+            }
         }
         //button.isEnabled = false
         return button
@@ -60,6 +65,7 @@ class AgentPhotoController: UIViewController{
         view.backgroundColor = .white
         setupUI()
     }
+    
     func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "3/3 Yeni hesab yaradın."
@@ -128,9 +134,22 @@ class AgentPhotoController: UIViewController{
 
         present(alertController, animated: true, completion: nil)
     }
+
+    func goToAccountScreen(){
+        
+        let scene = self.sceneDelegate
+        scene?.switchToTabViewController()
+    }
+}
+
+extension UIViewController {
+        var appDelegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
     
-    func goToAccountScreen() {
-        let vc = TabViewController()
-        navigationController?.pushViewController(vc, animated: true)
+    var sceneDelegate: SceneDelegate? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let delegate = windowScene.delegate as? SceneDelegate else { return nil }
+         return delegate
     }
 }
