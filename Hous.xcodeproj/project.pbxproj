@@ -26,6 +26,14 @@
 		38D20DEA2B6ADA7B00ECF628 /* NumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DE92B6ADA7B00ECF628 /* NumberViewModel.swift */; };
 		38D20DED2B6ADCA200ECF628 /* OtpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DEC2B6ADCA200ECF628 /* OtpViewModel.swift */; };
 		38D20DF02B6ADF7000ECF628 /* SelectAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DEF2B6ADF7000ECF628 /* SelectAccountViewModel.swift */; };
+		38D20DF52B6FA5B800ECF628 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DF42B6FA5B800ECF628 /* PostCell.swift */; };
+		38D20DF72B6FA60400ECF628 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DF62B6FA60400ECF628 /* ProfileHeaderView.swift */; };
+		38D20DF92B7B7A5500ECF628 /* ReelsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DF82B7B7A5500ECF628 /* ReelsCollectionView.swift */; };
+		38D20DFD2B7C155600ECF628 /* PersonalAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DFC2B7C155600ECF628 /* PersonalAccountViewModel.swift */; };
+		38D20DFF2B7D1D4600ECF628 /* ReelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DFE2B7D1D4600ECF628 /* ReelsCell.swift */; };
+		38D20E062B811C2200ECF628 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E052B811C2200ECF628 /* FollowingsView.swift */; };
+		38D20E092B811C6800ECF628 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E082B811C6800ECF628 /* TitleView.swift */; };
+		38D20E0B2B813EB100ECF628 /* PostDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E0A2B813EB100ECF628 /* PostDiscoverView.swift */; };
 		38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351A2B51756B00E9DA40 /* AppDelegate.swift */; };
 		38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */; };
 		38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351E2B51756B00E9DA40 /* FirstController.swift */; };
@@ -80,6 +88,14 @@
 		38D20DE92B6ADA7B00ECF628 /* NumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewModel.swift; sourceTree = "<group>"; };
 		38D20DEC2B6ADCA200ECF628 /* OtpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpViewModel.swift; sourceTree = "<group>"; };
 		38D20DEF2B6ADF7000ECF628 /* SelectAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountViewModel.swift; sourceTree = "<group>"; };
+		38D20DF42B6FA5B800ECF628 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		38D20DF62B6FA60400ECF628 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		38D20DF82B7B7A5500ECF628 /* ReelsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsCollectionView.swift; sourceTree = "<group>"; };
+		38D20DFC2B7C155600ECF628 /* PersonalAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccountViewModel.swift; sourceTree = "<group>"; };
+		38D20DFE2B7D1D4600ECF628 /* ReelsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsCell.swift; sourceTree = "<group>"; };
+		38D20E052B811C2200ECF628 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
+		38D20E082B811C6800ECF628 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		38D20E0A2B813EB100ECF628 /* PostDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDiscoverView.swift; sourceTree = "<group>"; };
 		38FB35172B51756B00E9DA40 /* Hous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FB351A2B51756B00E9DA40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,8 +157,8 @@
 		38D20DCD2B659B6000ECF628 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				38D20DCF2B65A38400ECF628 /* PersonalAccountController.swift */,
-				38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */,
+				38D20DFA2B7C142200ECF628 /* account */,
+				38D20DFB2B7C142D00ECF628 /* photo */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -175,7 +191,11 @@
 		38D20DDD2B66F7DF00ECF628 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				38D20E072B811C2A00ECF628 /* HeaderView */,
 				38D20DE22B66F83300ECF628 /* ProfileController.swift */,
+				38D20DF42B6FA5B800ECF628 /* PostCell.swift */,
+				38D20DF82B7B7A5500ECF628 /* ReelsCollectionView.swift */,
+				38D20DFE2B7D1D4600ECF628 /* ReelsCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -207,6 +227,44 @@
 			path = AccountScene;
 			sourceTree = "<group>";
 		};
+		38D20DF32B6F861D00ECF628 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DE62B684F4F00ECF628 /* UserModel.swift */,
+				38D20DE42B684DDF00ECF628 /* UserBuilder.swift */,
+				38FB35642B52EFD900E9DA40 /* ReusableButton.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		38D20DFA2B7C142200ECF628 /* account */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DCF2B65A38400ECF628 /* PersonalAccountController.swift */,
+				38D20DFC2B7C155600ECF628 /* PersonalAccountViewModel.swift */,
+			);
+			path = account;
+			sourceTree = "<group>";
+		};
+		38D20DFB2B7C142D00ECF628 /* photo */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */,
+			);
+			path = photo;
+			sourceTree = "<group>";
+		};
+		38D20E072B811C2A00ECF628 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				38D20DF62B6FA60400ECF628 /* ProfileHeaderView.swift */,
+				38D20E082B811C6800ECF628 /* TitleView.swift */,
+				38D20E052B811C2200ECF628 /* FollowingsView.swift */,
+				38D20E0A2B813EB100ECF628 /* PostDiscoverView.swift */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
 		38FB350E2B51756B00E9DA40 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +291,7 @@
 				38FB351A2B51756B00E9DA40 /* AppDelegate.swift */,
 				38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */,
 				38D20DBF2B55338700ECF628 /* Extentions */,
+				38D20DF32B6F861D00ECF628 /* Models */,
 				38FB35622B52D71600E9DA40 /* Scenes */,
 				38FB35542B52C52A00E9DA40 /* LaunchScreen.storyboard */,
 				38FB35262B51756C00E9DA40 /* Assets.xcassets */,
@@ -264,27 +323,16 @@
 		38FB35622B52D71600E9DA40 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				38FB35632B52DA5B00E9DA40 /* InitialScenes */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		38FB35632B52DA5B00E9DA40 /* InitialScenes */ = {
-			isa = PBXGroup;
-			children = (
-				38FB35642B52EFD900E9DA40 /* ReusableButton.swift */,
-				38D20DE42B684DDF00ECF628 /* UserBuilder.swift */,
-				38D20DE62B684F4F00ECF628 /* UserModel.swift */,
 				38D20DD72B66F64300ECF628 /* TabViewController.swift */,
-				38FB356A2B533AA600E9DA40 /* Onboarding */,
+				38FB35632B52DA5B00E9DA40 /* Onboarding */,
 				38D20DD92B66F7A200ECF628 /* Home */,
 				38D20DDB2B66F7CA00ECF628 /* Discover */,
 				38D20DDD2B66F7DF00ECF628 /* Profile */,
 			);
-			path = InitialScenes;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		38FB356A2B533AA600E9DA40 /* Onboarding */ = {
+		38FB35632B52DA5B00E9DA40 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				38FB351E2B51756B00E9DA40 /* FirstController.swift */,
@@ -450,7 +498,11 @@
 				38D20DC12B5533AE00ECF628 /* Extentions.swift in Sources */,
 				38D20DE32B66F83300ECF628 /* ProfileController.swift in Sources */,
 				38D20DEA2B6ADA7B00ECF628 /* NumberViewModel.swift in Sources */,
+				38D20E092B811C6800ECF628 /* TitleView.swift in Sources */,
 				38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */,
+				38D20E062B811C2200ECF628 /* FollowingsView.swift in Sources */,
+				38D20E0B2B813EB100ECF628 /* PostDiscoverView.swift in Sources */,
+				38D20DF72B6FA60400ECF628 /* ProfileHeaderView.swift in Sources */,
 				38D20DED2B6ADCA200ECF628 /* OtpViewModel.swift in Sources */,
 				38D20DCA2B5BC1C600ECF628 /* String+EXT.swift in Sources */,
 				38D20DF02B6ADF7000ECF628 /* SelectAccountViewModel.swift in Sources */,
@@ -460,10 +512,14 @@
 				38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */,
 				38D20DE52B684DDF00ECF628 /* UserBuilder.swift in Sources */,
 				38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */,
+				38D20DFD2B7C155600ECF628 /* PersonalAccountViewModel.swift in Sources */,
+				38D20DF92B7B7A5500ECF628 /* ReelsCollectionView.swift in Sources */,
 				38D20DDF2B66F81C00ECF628 /* HomeController.swift in Sources */,
+				38D20DFF2B7D1D4600ECF628 /* ReelsCell.swift in Sources */,
 				38D20DCC2B5C034600ECF628 /* SelectAccountController.swift in Sources */,
 				38D20DD62B66D14B00ECF628 /* AgentPhotoController.swift in Sources */,
 				38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */,
+				38D20DF52B6FA5B800ECF628 /* PostCell.swift in Sources */,
 				38D20DE72B684F4F00ECF628 /* UserModel.swift in Sources */,
 				38D20DE12B66F82800ECF628 /* DiscoverController.swift in Sources */,
 			);
@@ -554,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -611,7 +667,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -636,6 +692,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -664,6 +721,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -686,7 +744,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JBJ9TZ7T5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilaha.HousTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -706,7 +764,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9JBJ9TZ7T5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilaha.HousTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

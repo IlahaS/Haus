@@ -17,19 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             window = UIWindow(windowScene: windowScene)
             
-            //if UserDefaults.standard.bool(forKey: "loggedIn") {
-                //switchToTabViewController()
-                //let tabViewController = TabViewController()
-                //let navigationController = UINavigationController(rootViewController: tabViewController)
-                //window?.rootViewController = tabViewController
-               //window?.makeKeyAndVisible()
-            //}
-    //else {
+            if UserDefaults.standard.bool(forKey: "loggedIn") {
+                switchToTabViewController()
+               window?.makeKeyAndVisible()
+            }
+    else {
                 let firstController = FirstController()
                 let navigationController = UINavigationController(rootViewController: firstController)
                 window?.rootViewController = navigationController
                 
-           // }
+            }
         window?.makeKeyAndVisible()
         }
     
