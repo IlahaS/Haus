@@ -4,7 +4,6 @@ import SnapKit
 class ProfileController: UIViewController {
     
     private var isDiscoverButtonSelected = false
-    let postDiscoverView = PostDiscoverView()
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -43,15 +42,15 @@ class ProfileController: UIViewController {
                     profileHeaderView.delegate = self
                 }
 
-                postDiscoverView.didSelectDiscoverButton = { [weak self] in
-                    self?.isDiscoverButtonSelected = true
-                    self?.collectionView.reloadData()
-                }
-
-                postDiscoverView.didSelectHomeButton = { [weak self] in
-                    self?.isDiscoverButtonSelected = false
-                    self?.collectionView.reloadData()
-                }
+//                postDiscoverView.didSelectDiscoverButton = { [weak self] in
+//                    self?.isDiscoverButtonSelected = true
+//                    self?.collectionView.reloadData()
+//                }
+//
+//                postDiscoverView.didSelectHomeButton = { [weak self] in
+//                    self?.isDiscoverButtonSelected = false
+//                    self?.collectionView.reloadData()
+//                }
     }
 }
 
@@ -84,7 +83,7 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 278)
+        return CGSize(width: collectionView.frame.width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -106,7 +105,7 @@ extension ProfileController: ProfileHeaderViewDelegate {
     func didSelectDiscoverButton() {
         isDiscoverButtonSelected = true
         collectionView.reloadData()
-        postDiscoverView.didSelectDiscoverButton?()
+        //postDiscoverView.didSelectDiscoverButton?()
 
         
     }
@@ -114,7 +113,7 @@ extension ProfileController: ProfileHeaderViewDelegate {
     func didSelectHomeButton() {
         isDiscoverButtonSelected = false
                 collectionView.reloadData()
-        postDiscoverView.didSelectHomeButton?()
+        //postDiscoverView.didSelectHomeButton?()
 
     }
 }

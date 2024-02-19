@@ -12,7 +12,7 @@ class PostDiscoverView: UIView{
     var isDiscoverButtonClicked = true
     
     var didSelectHomeButton: (() -> Void)?
-        var didSelectDiscoverButton: (() -> Void)?
+    var didSelectDiscoverButton: (() -> Void)?
     
     let segmentStackView: UIStackView = {
         let stackView = UIStackView()
