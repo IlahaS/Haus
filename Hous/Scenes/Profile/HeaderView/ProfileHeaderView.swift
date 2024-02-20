@@ -48,8 +48,8 @@ class ProfileHeaderView: UICollectionReusableView {
         addSubview(postDiscoverView)
         postDiscoverView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(followingsView.snp.bottom)
-            make.height.equalTo(50)
+            make.top.equalTo(followingsView.snp.bottom).offset(17)
+            make.height.equalTo(36)
         }
 
         postDiscoverView.didSelectHomeButton = { [weak self] in

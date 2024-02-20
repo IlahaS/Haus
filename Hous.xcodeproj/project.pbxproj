@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C52B849E59008FB7FD /* DiscoverViewModel.swift */; };
+		387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C72B849F2E008FB7FD /* VideoCell.swift */; };
 		38D20DC12B5533AE00ECF628 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC02B5533AE00ECF628 /* Extentions.swift */; };
 		38D20DC32B58013300ECF628 /* NumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC22B58013300ECF628 /* NumberController.swift */; };
 		38D20DC52B58014600ECF628 /* OtpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20DC42B58014600ECF628 /* OtpController.swift */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387236C52B849E59008FB7FD /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		387236C72B849F2E008FB7FD /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		38D20DC02B5533AE00ECF628 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		38D20DC22B58013300ECF628 /* NumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberController.swift; sourceTree = "<group>"; };
 		38D20DC42B58014600ECF628 /* OtpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpController.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				38D20DE02B66F82800ECF628 /* DiscoverController.swift */,
+				387236C52B849E59008FB7FD /* DiscoverViewModel.swift */,
+				387236C72B849F2E008FB7FD /* VideoCell.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -520,6 +526,8 @@
 				38D20DD62B66D14B00ECF628 /* AgentPhotoController.swift in Sources */,
 				38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */,
 				38D20DF52B6FA5B800ECF628 /* PostCell.swift in Sources */,
+				387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */,
+				387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */,
 				38D20DE72B684F4F00ECF628 /* UserModel.swift in Sources */,
 				38D20DE12B66F82800ECF628 /* DiscoverController.swift in Sources */,
 			);

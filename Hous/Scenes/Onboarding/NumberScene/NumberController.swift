@@ -85,7 +85,8 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        nextButton.isEnabled = false
+        nextButton.backgroundColor = .grayColor3
         login()
         setupUI()
         setTermsAndPrivacyText()
@@ -100,47 +101,17 @@ class NumberController: UIViewController , UITextFieldDelegate  {
         
         if mobileNumber.count >= 12 {
             viewModel.updateMobileNumber(mobileNumber)
-            
             let otpController = OtpController(viewModel: .init(builder: viewModel.userBuilder))
             otpController.viewModel.mobileNumber = mobileNumber
             
             mobileNumberTextField.tintColor = .black
             navigationController?.pushViewController(otpController, animated: true)
         } else {
-            showError(message: "Mobil nömrə ən az 9 simvoldan ibarət olmalıdır")
+            nextButton.isEnabled = false
         }
     }
     
-    func showError(message: String) {
-        let warningImage = UIImageView(image: UIImage(named: "rounded_warning"))
-        
-        let errorLabel = UILabel()
-        errorLabel.text = message
-        errorLabel.textColor = .red
-        errorLabel.textAlignment = .left
-        errorLabel.font = UIFont.systemFont(ofSize: 14)
-
-        errorLabel.numberOfLines = 0
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [warningImage, errorLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 4
-        
-        view.addSubview(stackView)
-        
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(termsAndPrivacyTextView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-        }
-        UIView.animate(withDuration: 3.0, animations: {
-            stackView.alpha = 0.0
-        }) { _ in
-            stackView.removeFromSuperview()
-        }
-    }
+    
     
     func login() {
         UserDefaults.standard.setValue(true, forKey: "loggedIn")
@@ -219,6 +190,10 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         
+        if text.count >= 11{
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = .mainBlueColor
+        }
         let newString = (text as NSString).replacingCharacters(in: range, with: string)
         textField.text = String.format(with: "XX XXX XX XX", phone: newString)
         

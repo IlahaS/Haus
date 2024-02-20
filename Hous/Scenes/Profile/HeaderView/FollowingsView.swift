@@ -84,13 +84,13 @@ class FollowingsView: UIView{
     
     private func setupFollowingView() {
         
-        //addSubview(headerView)
-        //addSubview(followingView)
-        
-        snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(160)
-        }
+//        addSubview(headerView)
+//        //addSubview(followingView)
+//        
+//        snp.makeConstraints { make in
+//            make.top.leading.trailing.equalToSuperview()
+//            make.height.equalTo(160)
+//        }
         
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in

@@ -5,56 +5,45 @@ class ProfileController: UIViewController {
     
     private var isDiscoverButtonSelected = false
     
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: 165, height: 201)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .red
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
     
     }
     
     private func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PostCell.self, forCellWithReuseIdentifier: "postCollectionCell")
-        collectionView.register(ProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "profileHeader")
-        collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
+  
 
+        collectionView.register(PostCell.self, forCellWithReuseIdentifier: "postCollectionCell")
+        
+        collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
+        collectionView.register(ProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(ProfileHeaderView.self)")
         //postDiscoverView.delegate = collectionView.headerView
         
-        view.addSubview(collectionView)
-        
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        if let profileHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "profileHeader", for: IndexPath(item: 0, section: 0)) as? ProfileHeaderView {
-                    profileHeaderView.delegate = self
-                }
-
-//                postDiscoverView.didSelectDiscoverButton = { [weak self] in
-//                    self?.isDiscoverButtonSelected = true
-//                    self?.collectionView.reloadData()
-//                }
-//
-//                postDiscoverView.didSelectHomeButton = { [weak self] in
-//                    self?.isDiscoverButtonSelected = false
-//                    self?.collectionView.reloadData()
-//                }
     }
 }
 
 extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -83,7 +72,7 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 300)
+        return CGSize(width: collectionView.frame.width, height: 274)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -95,7 +84,7 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "profileHeader", for: indexPath) as! ProfileHeaderView
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(ProfileHeaderView.self)", for: indexPath) as! ProfileHeaderView
         headerView.delegate = self
         return headerView
     }
@@ -107,7 +96,6 @@ extension ProfileController: ProfileHeaderViewDelegate {
         collectionView.reloadData()
         //postDiscoverView.didSelectDiscoverButton?()
 
-        
     }
     
     func didSelectHomeButton() {

@@ -162,7 +162,7 @@ class OtpController: UIViewController {
             textField.textAlignment = .center
             textField.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             textField.textColor = .black
-            textField.keyboardType = .numberPad
+            
             textField.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
             textField.delegate = self
             return textField
@@ -195,8 +195,17 @@ class OtpController: UIViewController {
 }
     
 extension OtpController: UITextFieldDelegate {
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text else { return false }
+        
+        let isNumber = string.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+        
+        if !isNumber {
+            return false
+        }
+        
+        textField.text = isNumber ? string : ""
         
         if string.isEmpty {
             textField.text = ""
