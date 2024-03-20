@@ -13,7 +13,7 @@ struct User: Codable {
 }
 
 struct UserRegistration: Codable {
-    var id: Int?
+    var id: String?
     var name: String?
     var username: String?
     var profilePhoto: String?

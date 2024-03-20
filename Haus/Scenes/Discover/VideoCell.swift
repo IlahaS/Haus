@@ -7,6 +7,7 @@
 import UIKit
 import SnapKit
 
+
 class VideoCell: UICollectionViewCell {
     static let identifier = "VideoCell"
     
@@ -133,8 +134,10 @@ class VideoCell: UICollectionViewCell {
         toggleDescriptionExpansion()
     }
     
-    func configure(with videoURL: String) {
-        playerView.backgroundColor = UIColor.random()
+    func configure(with video: Item) {
+        self.titleLabel.text = "realemlak"
+        self.descriptionLabel.text = video.description
+        
     }
     
     func toggleDescriptionExpansion() {

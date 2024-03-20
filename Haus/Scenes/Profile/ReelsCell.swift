@@ -7,6 +7,7 @@ class ReelsCell: UICollectionViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
+        view.layer.cornerRadius = 10
         return view
     }()
     

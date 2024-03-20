@@ -31,9 +31,9 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        
         setupUI()
     }
+    
     
     private func setupUI() {
         setupSearchBar()
@@ -77,6 +77,10 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.register(RentTypeCell.self, forCellWithReuseIdentifier: RentTypeCell.identifier)
         collectionView.register(SearchPropertyCell.self, forCellWithReuseIdentifier: SearchPropertyCell.identifier)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        collectionView.register(PropertyCell.self, forCellWithReuseIdentifier: PropertyCell.identifier)
+        collectionView.register(FuturedCell.self, forCellWithReuseIdentifier: FuturedCell.identifier)
+        collectionView.register(LatestCell.self, forCellWithReuseIdentifier: LatestCell.identifier)
+        
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -105,13 +109,13 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
             return cell
         case .featuredPost(_):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FuturedCell.identifier, for: indexPath) as! FuturedCell
             return cell
         case .propertyList(_):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchPropertyCell.identifier, for: indexPath) as! SearchPropertyCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyCell.identifier, for: indexPath) as! PropertyCell
             return cell
         case .latestAnnouncements(_):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchPropertyCell.identifier, for: indexPath) as! SearchPropertyCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LatestCell.identifier, for: indexPath) as! LatestCell
             return cell
         }
     }
@@ -128,8 +132,12 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return CGSize(width: collectionView.frame.width, height: 70)
         case .propertyCategory(_):
             return CGSize(width: collectionView.frame.width, height: 90)
-        case .featuredPost(_), .propertyList(_), .latestAnnouncements(_):
-            return CGSize(width: collectionView.frame.width, height: 120)
+        case .featuredPost(_):
+            return CGSize(width: collectionView.frame.width, height: 235)
+        case .propertyList(_):
+            return CGSize(width: collectionView.frame.width, height: 501)
+        case .latestAnnouncements(_):
+            return CGSize(width: collectionView.frame.width, height: 501)
         }
     }
 }

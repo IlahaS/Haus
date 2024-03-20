@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		383F28482BA44287002BEEB4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F28472BA44287002BEEB4 /* NetworkManager.swift */; };
 		383F284B2BA443EF002BEEB4 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */; };
-		383F284D2BA4479C002BEEB4 /* Enpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284C2BA4479C002BEEB4 /* Enpoints.swift */; };
+		383F284D2BA4479C002BEEB4 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284C2BA4479C002BEEB4 /* Endpoints.swift */; };
 		383F284F2BA449F2002BEEB4 /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284E2BA449F2002BEEB4 /* DiscoverModel.swift */; };
 		387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C52B849E59008FB7FD /* DiscoverViewModel.swift */; };
 		387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C72B849F2E008FB7FD /* VideoCell.swift */; };
@@ -46,6 +46,11 @@
 		38D20E062B811C2200ECF628 /* FollowingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E052B811C2200ECF628 /* FollowingsView.swift */; };
 		38D20E092B811C6800ECF628 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E082B811C6800ECF628 /* TitleView.swift */; };
 		38D20E0B2B813EB100ECF628 /* PostDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D20E0A2B813EB100ECF628 /* PostDiscoverView.swift */; };
+		38D252932BA70BE3008D5771 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D252922BA70BE3008D5771 /* ErrorHandler.swift */; };
+		38D252952BA713CE008D5771 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D252942BA713CE008D5771 /* PropertyCell.swift */; };
+		38D252972BA71672008D5771 /* FuturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D252962BA71672008D5771 /* FuturedCell.swift */; };
+		38D252992BA717B7008D5771 /* LatestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D252982BA717B7008D5771 /* LatestCell.swift */; };
+		38D2529B2BAB0A59008D5771 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D2529A2BAB0A59008D5771 /* HomeModel.swift */; };
 		38D2DD7D2B864AD1007BA024 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38D2DD7F2B864AD1007BA024 /* Localizable.strings */; };
 		38D2DD842B878C8C007BA024 /* MockkJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 38D2DD832B878C8C007BA024 /* MockkJSON.json */; };
 		38D2DD862B87E764007BA024 /* DatabaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D2DD852B87E764007BA024 /* DatabaseAdapter.swift */; };
@@ -83,7 +88,7 @@
 /* Begin PBXFileReference section */
 		383F28472BA44287002BEEB4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
-		383F284C2BA4479C002BEEB4 /* Enpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enpoints.swift; sourceTree = "<group>"; };
+		383F284C2BA4479C002BEEB4 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		383F284E2BA449F2002BEEB4 /* DiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
 		387236C52B849E59008FB7FD /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		387236C72B849F2E008FB7FD /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -119,6 +124,11 @@
 		38D20E052B811C2200ECF628 /* FollowingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingsView.swift; sourceTree = "<group>"; };
 		38D20E082B811C6800ECF628 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		38D20E0A2B813EB100ECF628 /* PostDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDiscoverView.swift; sourceTree = "<group>"; };
+		38D252922BA70BE3008D5771 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		38D252942BA713CE008D5771 /* PropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
+		38D252962BA71672008D5771 /* FuturedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturedCell.swift; sourceTree = "<group>"; };
+		38D252982BA717B7008D5771 /* LatestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCell.swift; sourceTree = "<group>"; };
+		38D2529A2BAB0A59008D5771 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		38D2DD7E2B864AD1007BA024 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		38D2DD802B864AD4007BA024 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/Localizable.strings; sourceTree = "<group>"; };
 		38D2DD812B864AD4007BA024 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,7 +185,8 @@
 			children = (
 				383F28472BA44287002BEEB4 /* NetworkManager.swift */,
 				383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */,
-				383F284C2BA4479C002BEEB4 /* Enpoints.swift */,
+				383F284C2BA4479C002BEEB4 /* Endpoints.swift */,
+				38D252922BA70BE3008D5771 /* ErrorHandler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -187,6 +198,9 @@
 				38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */,
 				38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */,
 				38B6B80F2B98F37500A748F4 /* CategoryCell.swift */,
+				38D252962BA71672008D5771 /* FuturedCell.swift */,
+				38D252942BA713CE008D5771 /* PropertyCell.swift */,
+				38D252982BA717B7008D5771 /* LatestCell.swift */,
 			);
 			path = HomeCells;
 			sourceTree = "<group>";
@@ -224,6 +238,7 @@
 				38B6B8032B8D286200A748F4 /* HomeCells */,
 				38D20DDE2B66F81C00ECF628 /* HomeController.swift */,
 				38B6B80B2B8F868900A748F4 /* HomeViewModel.swift */,
+				38D2529A2BAB0A59008D5771 /* HomeModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -340,9 +355,9 @@
 		38FB35192B51756B00E9DA40 /* Haus */ = {
 			isa = PBXGroup;
 			children = (
-				383F28492BA443D8002BEEB4 /* Network */,
 				38FB351A2B51756B00E9DA40 /* AppDelegate.swift */,
 				38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */,
+				383F28492BA443D8002BEEB4 /* Network */,
 				38D20DBF2B55338700ECF628 /* Extentions */,
 				38D20DF32B6F861D00ECF628 /* Models */,
 				38FB35622B52D71600E9DA40 /* Scenes */,
@@ -453,7 +468,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					38FB35162B51756B00E9DA40 = {
 						CreatedOnToolsVersion = 15.1;
@@ -552,6 +567,8 @@
 				38D20DED2B6ADCA200ECF628 /* OtpViewModel.swift in Sources */,
 				38D20DCA2B5BC1C600ECF628 /* String+EXT.swift in Sources */,
 				38D20DF02B6ADF7000ECF628 /* SelectAccountViewModel.swift in Sources */,
+				38D2529B2BAB0A59008D5771 /* HomeModel.swift in Sources */,
+				38D252952BA713CE008D5771 /* PropertyCell.swift in Sources */,
 				38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */,
 				38D20DC52B58014600ECF628 /* OtpController.swift in Sources */,
 				38D20DC32B58013300ECF628 /* NumberController.swift in Sources */,
@@ -561,7 +578,7 @@
 				38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */,
 				38B6B8102B98F37500A748F4 /* CategoryCell.swift in Sources */,
 				383F284B2BA443EF002BEEB4 /* NetworkHelper.swift in Sources */,
-				383F284D2BA4479C002BEEB4 /* Enpoints.swift in Sources */,
+				383F284D2BA4479C002BEEB4 /* Endpoints.swift in Sources */,
 				38D20DFD2B7C155600ECF628 /* PersonalAccountViewModel.swift in Sources */,
 				38D20DF92B7B7A5500ECF628 /* ReelsCollectionView.swift in Sources */,
 				38D20DDF2B66F81C00ECF628 /* HomeController.swift in Sources */,
@@ -569,12 +586,15 @@
 				38D20DCC2B5C034600ECF628 /* SelectAccountController.swift in Sources */,
 				38D20DD62B66D14B00ECF628 /* AgentPhotoController.swift in Sources */,
 				383F284F2BA449F2002BEEB4 /* DiscoverModel.swift in Sources */,
+				38D252932BA70BE3008D5771 /* ErrorHandler.swift in Sources */,
 				38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */,
 				38D20DF52B6FA5B800ECF628 /* PostCell.swift in Sources */,
 				387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */,
 				387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */,
 				38D20DE72B684F4F00ECF628 /* UserModel.swift in Sources */,
 				38D20DE12B66F82800ECF628 /* DiscoverController.swift in Sources */,
+				38D252992BA717B7008D5771 /* LatestCell.swift in Sources */,
+				38D252972BA71672008D5771 /* FuturedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +647,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -690,6 +711,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

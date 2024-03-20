@@ -17,15 +17,15 @@ final class NetworkManager {
         endpoint: String,
         parameters: Parameters? = nil,
         encoding: ParameterEncoding = URLEncoding.default,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
+        completion: @escaping((T?, String?) -> Void))
+     {
         
         AF.request("\(NetworkHelper.baseURL)\(endpoint)").responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let items):
-                completion(.success(items))
+                completion(items, nil)
             case .failure(let error):
-                completion(.failure(error))
+                completion(nil, error.localizedDescription)
             }
         }
     }

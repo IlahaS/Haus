@@ -30,10 +30,10 @@ class CategoryCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     }()
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
+        super.init(frame: frame)
         backgroundColor = .orange
-            setupUI()
-        }
+        setupUI()
+    }
     
     
     
@@ -42,11 +42,11 @@ class CategoryCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     }
     
     private func setupUI() {
-            addSubview(collectionView)
-            collectionView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+        addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         3
@@ -64,12 +64,12 @@ class CategoryCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 115, height: 90)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-             .init(top: 10, left: 16, bottom: 10, right: 16)
-     }
+        .init(top: 10, left: 16, bottom: 10, right: 16)
+    }
     
     func configure() {
         
@@ -110,7 +110,7 @@ class CategorySubCell: UICollectionViewCell{
     private func setupSubviews() {
         addSubview(imageView)
         addSubview(titleLabel)
-            
+        
         
         imageView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-8)

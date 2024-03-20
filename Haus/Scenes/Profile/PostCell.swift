@@ -11,6 +11,8 @@ import SnapKit
 
 class PostCell: UICollectionViewCell {
     
+    static let identifier = "PostCell"
+    
     let postImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray

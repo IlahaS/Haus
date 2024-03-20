@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Enpoints: String {
+enum Endpoints: String {
     case discover = "discover"
     case home = "home"
     case pofile = "profil"

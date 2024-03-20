@@ -29,5 +29,6 @@ final class TabViewController: UITabBarController {
     private func customizeTabBarAppearance() {        
         UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.tintColor], for: .selected)
         self.tabBar.tintColor = .mainBlueColor
+        self.tabBar.backgroundColor = .white
     }
 }

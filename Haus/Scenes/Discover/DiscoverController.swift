@@ -11,15 +11,31 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
+        
+
         //navigationController?.navigationBar.backgroundColor = .red
         setupCollectionView()
         setupSwipeGesture()
+        setupViewModelCallbacks()
         viewModel.fetchVideos()
         collectionView.reloadData()
+        
+        
+    }
+    
+    private func setupViewModelCallbacks() {
+        viewModel.error = { errorMessage in
+            print("Error: \(errorMessage)")
+        }
+
+        viewModel.success = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.backgroundColor = .black
         tabBarController?.tabBar.barTintColor = .black
         tabBarController?.tabBar.tintColor = .white
         tabBarController?.tabBar.unselectedItemTintColor = .gray
@@ -29,9 +45,9 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        tabBarController?.tabBar.barTintColor = nil
+        tabBarController?.tabBar.barTintColor = .white
+        tabBarController?.tabBar.backgroundColor = .white
         tabBarController?.tabBar.tintColor = .mainBlueColor
-        tabBarController?.tabBar.unselectedItemTintColor = nil
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
@@ -43,7 +59,7 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         layout.minimumLineSpacing = 0
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .blue
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -75,12 +91,13 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.videos.count
+        return viewModel.items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.identifier, for: indexPath) as! VideoCell
-        cell.configure(with: viewModel.videos[indexPath.item])
+        cell.configure(with: viewModel.items[indexPath.item])
+        cell.backgroundColor = .red
         return cell
     }
 

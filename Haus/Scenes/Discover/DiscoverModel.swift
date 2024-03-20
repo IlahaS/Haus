@@ -23,13 +23,13 @@ struct DataClass: Codable {
     let indexFrom, pageIndex, pageSize, totalCount: Int?
     let totalPages: Int?
     let items: [Item]?
-    let hasPreviousPage, hasNextPage: Bool?
+    let hasPreviousPage, hasNextPage: Bool
 }
 
-// MARK: - Item
+ //MARK: - Item
 struct Item: Codable {
     let id, createdAt, description: String?
-    let user: User?
+    let user: UserRegistration?
 }
 
 
