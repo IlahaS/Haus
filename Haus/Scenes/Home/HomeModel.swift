@@ -12,7 +12,7 @@ struct HomeModel: Codable {
     let isSuccessful: Bool?
     let statusCode: Int?
     let messages: [String]?
-    let data: DataClass?
+    let data: DataModel?
 }
 
 // MARK: - DataClass
@@ -41,7 +41,8 @@ struct FeaturingPost: Codable {
 }
 
 // MARK: - LatestPost
-struct LatestPost: Codable {
+struct LatestPost: Codable, PostCellProtocol {
+    
     let id: String?
     let price: Int?
     let photoURL: String?
@@ -49,10 +50,28 @@ struct LatestPost: Codable {
     let floor: String?
     let square: Int?
     let metroStation: String?
+    let description: String?
+    
+    var imagePath: String{
+        photoURL ?? ""
+    }
+    
+    var priceValue: Int{
+        price ?? 0
+    }
+    
+    var descriptionLabel: String{
+        description ?? ""
+    }
+    
+    var locationLabel: String{
+        metroStation ?? ""
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, price
         case photoURL = "photoUrl"
+        case description = ""
         case roomCount, floor, square, metroStation
     }
 }

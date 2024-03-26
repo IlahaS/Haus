@@ -13,6 +13,7 @@ class FollowingsView: UIView{
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "profileLogo")
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 35
         return imageView

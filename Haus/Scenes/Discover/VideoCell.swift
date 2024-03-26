@@ -6,17 +6,58 @@
 //
 import UIKit
 import SnapKit
-
+import AVFoundation
 
 class VideoCell: UICollectionViewCell {
     static let identifier = "VideoCell"
+    var viewModel = DiscoverViewModel()
+    var player: AVPlayer?
     
-    var playerView: UIView!
-    var logoImageView: UIImageView!
-    var titleLabel: UILabel!
-    var actionButton: UIButton!
-    var descriptionLabel: UILabel!
-    var shareButton: UIButton!
+    var playerView: AVPlayerLayer! = {
+        let view = AVPlayerLayer()
+        return view
+    }()
+    
+    var logoImageView: UIImageView! = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .gray
+        image.image = UIImage(named: "profileLogo")
+        image.layer.cornerRadius = 17
+        return image
+    }()
+    
+    var titleLabel: UILabel! = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 14)
+        label.text = "@realemlak.00"
+        return label
+    }()
+    
+    var actionButton: UIButton! = {
+        let button = UIButton(type: .system)
+        button.setTitle("Elana bax", for: .normal)
+        button.backgroundColor = UIColor.gray
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12)
+        button.layer.cornerRadius = 4
+        return button
+    }()
+    
+    var descriptionLabel: UILabel! = {
+        let label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    var shareButton: UIButton! = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrowshape.turn.up.right.fill"), for: .normal)
+        button.tintColor = .white
+        return button
+    }()
     
     var isDescriptionExpanded = false
     
@@ -33,28 +74,20 @@ class VideoCell: UICollectionViewCell {
     
     func setupSubviews() {
         
-        playerView = UIView()
-        addSubview(playerView)
-        playerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
+        //playerView
+        contentView.layer.insertSublayer(playerView, at: 0)
+        //progressView
         let progressBar = UIProgressView()
         progressBar.progressTintColor = .white
         progressBar.trackTintColor = .gray
         progressBar.progress = 0.5
-        
         addSubview(progressBar)
         progressBar.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(2)
         }
         
-        shareButton = UIButton(type: .system)
-        addSubview(shareButton)
-        shareButton.setImage(UIImage(systemName: "arrowshape.turn.up.right.fill"), for: .normal)
-        shareButton.tintColor = .white
-        
+        //shareStackView
         let shareLabel = UILabel()
         shareLabel.text = "Paylaş"
         shareLabel.font = .systemFont(ofSize: 12)
@@ -66,7 +99,6 @@ class VideoCell: UICollectionViewCell {
         stackView.alignment = .center
         
         addSubview(stackView)
-        
         stackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().offset(-20)
@@ -74,21 +106,13 @@ class VideoCell: UICollectionViewCell {
             make.height.equalTo(42)
         }
         
-        descriptionLabel = UILabel()
         addSubview(descriptionLabel)
-        descriptionLabel.textColor = .white
-        descriptionLabel.numberOfLines = 2
-        descriptionLabel.text = "Şüvəlan qəsəbəsində Şimal DRES elektrik stansiyası tərəfdə düz yolun qırağında ümumi torpaq sahəsi 11 sot olan 2-mərtəbəli, 9 otaqdan (6 yataq otağı), 2 sanuzeldən ibarət olan BAĞ EVİ SATILIR! Evdə hər bir şərait mövcuddur və Dənizə 5 dəqiqəlik məsafədədir."
         descriptionLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalTo(stackView.snp.leading).offset(-16)
         }
         
-        logoImageView = UIImageView()
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.backgroundColor = .gray
-        logoImageView.layer.cornerRadius = 17
         
         addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
@@ -97,25 +121,12 @@ class VideoCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(16)
         }
         
-        
-        titleLabel = UILabel()
-        titleLabel.textColor = .white
-        titleLabel.font = .systemFont(ofSize: 14)
-        
-        titleLabel.text = "@realemlak.00"
-        
+
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(logoImageView.snp.trailing).offset(8)
             make.centerY.equalTo(logoImageView)
         }
-        
-        actionButton = UIButton(type: .system)
-        actionButton.setTitle("Elana bax", for: .normal)
-        actionButton.backgroundColor = UIColor.gray
-        actionButton.setTitleColor(.white, for: .normal)
-        actionButton.titleLabel?.font = .systemFont(ofSize: 12)
-        actionButton.layer.cornerRadius = 4
         
         addSubview(actionButton)
         actionButton.snp.makeConstraints { make in
@@ -126,19 +137,36 @@ class VideoCell: UICollectionViewCell {
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(descriptionLabelTapped))
-            descriptionLabel.isUserInteractionEnabled = true
-            descriptionLabel.addGestureRecognizer(tapGesture)
+        descriptionLabel.isUserInteractionEnabled = true
+        descriptionLabel.addGestureRecognizer(tapGesture)
     }
     
     @objc func descriptionLabelTapped() {
         toggleDescriptionExpansion()
     }
     
-    func configure(with video: Item) {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        playerView.frame = contentView.bounds
+    }
+
+    func configure(with video: Item, fileName: String) {
+        guard let path = Bundle.main.path(forResource: fileName, ofType: "mp4") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        playerView.player = player
+        playerView.frame = contentView.bounds
+        playerView.videoGravity = .resizeAspectFill
+        player?.volume = 0
+        player?.play()
+        
         self.titleLabel.text = "realemlak"
         self.descriptionLabel.text = video.description
-        
     }
+
     
     func toggleDescriptionExpansion() {
         isDescriptionExpanded.toggle()

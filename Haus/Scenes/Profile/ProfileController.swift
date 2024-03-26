@@ -5,6 +5,10 @@ class ProfileController: UIViewController {
     
     private var isDiscoverButtonSelected = false
     
+    var prices = ["26 000 AZN", "423 000 AZN", "55 000 AZN", "264 000 AZN", "2 444 000 AZN", "90 000 AZN"]
+    var images = ["post1", "post2", "post3", "post4", "post1", "post2"]
+    var reels = ["reel1", "reel3", "reel2", "reel3", "reel2", "reel1","reel1", "reel2", "reel3", "reel3", "reel2"]
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
@@ -23,15 +27,15 @@ class ProfileController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
-    
+        
     }
     
     private func setupCollectionView() {
-  
-
+        
+        
         collectionView.register(PostCell.self, forCellWithReuseIdentifier: "postCollectionCell")
         
         collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
@@ -42,21 +46,26 @@ class ProfileController: UIViewController {
 }
 
 extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if isDiscoverButtonSelected{
+            return reels.count
+        } else{
+            return images.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if isDiscoverButtonSelected {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelsCell", for: indexPath) as! ReelsCell
-            cell.backgroundColor = .gray
+            cell.imageView.image = UIImage(named: reels[indexPath.row])
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCollectionCell", for: indexPath) as! PostCell
-            cell.priceLabel.text = "Post Title \(indexPath.item + 1)"
-            cell.descriptionLabel.text = "Lorem ipsum dolor sit amet"
+            cell.priceLabel.text = prices[indexPath.row]
+            cell.postImageView.image = UIImage(named: images[indexPath.row])
+            cell.descriptionLabel.text = "3 otaqlı · 96 m2 · 4/17 mərtəbə"
             cell.locationLabel.text = "28 May metro"
             return cell
         }
@@ -87,20 +96,20 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
         headerView.delegate = self
         return headerView
     }
-
+    
 }
 extension ProfileController: ProfileHeaderViewDelegate {
     func didSelectDiscoverButton() {
         isDiscoverButtonSelected = true
         collectionView.reloadData()
         //postDiscoverView.didSelectDiscoverButton?()
-
+        
     }
     
     func didSelectHomeButton() {
         isDiscoverButtonSelected = false
-                collectionView.reloadData()
+        collectionView.reloadData()
         //postDiscoverView.didSelectHomeButton?()
-
+        
     }
 }

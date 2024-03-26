@@ -1,18 +1,18 @@
 
 import UIKit
 import SnapKit
+//import SkeletonView
 
 class DiscoverController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     var collectionView: UICollectionView!
     var viewModel = DiscoverViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
         
-
         //navigationController?.navigationBar.backgroundColor = .red
         setupCollectionView()
         setupSwipeGesture()
@@ -27,7 +27,7 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         viewModel.error = { errorMessage in
             print("Error: \(errorMessage)")
         }
-
+        
         viewModel.success = { [weak self] in
             self?.collectionView.reloadData()
         }
@@ -57,52 +57,48 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .black
         
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
         collectionView.contentInsetAdjustmentBehavior = .never
-
+        
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.identifier)
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-                //.offset(-tabBarController!.tabBar.frame.height)
-            }
+            //.offset(-tabBarController!.tabBar.frame.height)
+        }
         
     }
-
+    
     func setupSwipeGesture() {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
         swipeGesture.direction = .down
         collectionView.addGestureRecognizer(swipeGesture)
     }
-
+    
     @objc func handleSwipeGesture() {
-       
+        
         print("Swiped down - load new video")
     }
-
-    // MARK: - UICollectionViewDataSource
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.items.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.identifier, for: indexPath) as! VideoCell
-        cell.configure(with: viewModel.items[indexPath.item])
-        cell.backgroundColor = .red
+        let fileName = viewModel.videoFileName[indexPath.item % viewModel.videoFileName.count] // Ensure looping through videoFileName
+        cell.configure(with: viewModel.items[indexPath.item], fileName: fileName)
         return cell
     }
-
-    // MARK: - UICollectionViewDelegateFlowLayout
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.bounds.size
     }

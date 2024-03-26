@@ -12,6 +12,7 @@ class DiscoverViewModel {
     var items = [Item]()
     var discover: Discover?
     var manager = NetworkManager()
+    var videoFileName = ["video1", "video2", "video3", "video4", "video5"]
     
     var success: (() -> Void)?
     var error: ((String) -> Void)?

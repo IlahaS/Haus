@@ -106,11 +106,11 @@ class SelectAccountController: UIViewController{
         guard let index = viewModel.selectedAccountType.firstIndex(of: accountType) else {
             return
         }
-
+        
         viewModel.selectedAccountIndex = index
         collectionView.reloadData()
         nextButton.isEnabled = true
-            }
+    }
     
     
     private func presentViewControllerFor(accountType: AccountType, builder: UserBuilder) {

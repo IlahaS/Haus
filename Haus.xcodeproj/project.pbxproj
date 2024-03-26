@@ -11,6 +11,11 @@
 		383F284B2BA443EF002BEEB4 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */; };
 		383F284D2BA4479C002BEEB4 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284C2BA4479C002BEEB4 /* Endpoints.swift */; };
 		383F284F2BA449F2002BEEB4 /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F284E2BA449F2002BEEB4 /* DiscoverModel.swift */; };
+		3845B0692BB350A80017D9FB /* video2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3845B0642BB350A80017D9FB /* video2.mp4 */; };
+		3845B06A2BB350A80017D9FB /* video3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3845B0652BB350A80017D9FB /* video3.mp4 */; };
+		3845B06B2BB350A80017D9FB /* video4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3845B0662BB350A80017D9FB /* video4.mp4 */; };
+		3845B06C2BB350A80017D9FB /* video5.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3845B0672BB350A80017D9FB /* video5.mp4 */; };
+		3845B06D2BB350A80017D9FB /* video1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3845B0682BB350A80017D9FB /* video1.mp4 */; };
 		387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C52B849E59008FB7FD /* DiscoverViewModel.swift */; };
 		387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C72B849F2E008FB7FD /* VideoCell.swift */; };
 		38B6B8052B8D289C00A748F4 /* RentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */; };
@@ -90,6 +95,11 @@
 		383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		383F284C2BA4479C002BEEB4 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		383F284E2BA449F2002BEEB4 /* DiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
+		3845B0642BB350A80017D9FB /* video2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video2.mp4; sourceTree = "<group>"; };
+		3845B0652BB350A80017D9FB /* video3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video3.mp4; sourceTree = "<group>"; };
+		3845B0662BB350A80017D9FB /* video4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video4.mp4; sourceTree = "<group>"; };
+		3845B0672BB350A80017D9FB /* video5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video5.mp4; sourceTree = "<group>"; };
+		3845B0682BB350A80017D9FB /* video1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video1.mp4; sourceTree = "<group>"; };
 		387236C52B849E59008FB7FD /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		387236C72B849F2E008FB7FD /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTypeCell.swift; sourceTree = "<group>"; };
@@ -191,6 +201,18 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		3845B06E2BB384A10017D9FB /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				3845B0682BB350A80017D9FB /* video1.mp4 */,
+				3845B0642BB350A80017D9FB /* video2.mp4 */,
+				3845B0652BB350A80017D9FB /* video3.mp4 */,
+				3845B0662BB350A80017D9FB /* video4.mp4 */,
+				3845B0672BB350A80017D9FB /* video5.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		38B6B8032B8D286200A748F4 /* HomeCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,7 +284,6 @@
 				38D20DF42B6FA5B800ECF628 /* PostCell.swift */,
 				38D20DF82B7B7A5500ECF628 /* ReelsCollectionView.swift */,
 				38D20DFE2B7D1D4600ECF628 /* ReelsCell.swift */,
-				38D2DD832B878C8C007BA024 /* MockkJSON.json */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -361,6 +382,8 @@
 				38D20DBF2B55338700ECF628 /* Extentions */,
 				38D20DF32B6F861D00ECF628 /* Models */,
 				38FB35622B52D71600E9DA40 /* Scenes */,
+				38D2DD832B878C8C007BA024 /* MockkJSON.json */,
+				3845B06E2BB384A10017D9FB /* Videos */,
 				38FB35542B52C52A00E9DA40 /* LaunchScreen.storyboard */,
 				38FB35262B51756C00E9DA40 /* Assets.xcassets */,
 				38FB352B2B51756C00E9DA40 /* Haus.entitlements */,
@@ -501,6 +524,7 @@
 				38FB355C2B52C95A00E9DA40 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				38FB355F2B52C96A00E9DA40 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				38D20DC62B59440D00ECF628 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */,
+				3845B06F2BB388D00017D9FB /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 38FB35182B51756B00E9DA40 /* Products */;
 			projectDirPath = "";
@@ -520,9 +544,14 @@
 			files = (
 				38FB35272B51756C00E9DA40 /* Assets.xcassets in Resources */,
 				38D2DD7D2B864AD1007BA024 /* Localizable.strings in Resources */,
+				3845B06C2BB350A80017D9FB /* video5.mp4 in Resources */,
+				3845B06D2BB350A80017D9FB /* video1.mp4 in Resources */,
+				3845B0692BB350A80017D9FB /* video2.mp4 in Resources */,
 				38FB35552B52C52A00E9DA40 /* LaunchScreen.storyboard in Resources */,
+				3845B06B2BB350A80017D9FB /* video4.mp4 in Resources */,
 				38D2DD842B878C8C007BA024 /* MockkJSON.json in Resources */,
 				38FB35572B52C85900E9DA40 /* LaunchAnimation.json in Resources */,
+				3845B06A2BB350A80017D9FB /* video3.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +968,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3845B06F2BB388D00017D9FB /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.30.4;
+			};
+		};
 		38D20DC62B59440D00ECF628 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Skyscanner/SkyFloatingLabelTextField.git";

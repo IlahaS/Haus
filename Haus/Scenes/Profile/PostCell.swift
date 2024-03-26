@@ -8,6 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol PostCellProtocol{
+    
+    var imagePath: String { get }
+    var priceValue: Int { get }
+    var descriptionLabel: String { get }
+    var locationLabel: String { get }
+}
 
 class PostCell: UICollectionViewCell {
     
@@ -44,7 +51,7 @@ class PostCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         addSubview(postImageView)
         addSubview(priceLabel)
         addSubview(descriptionLabel)
@@ -74,5 +81,17 @@ class PostCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with post: PostCellProtocol){
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        if let formattedPrice = formatter.string(from: NSNumber(value: post.priceValue)) {
+            priceLabel.text = "\(formattedPrice) AZN"
+        } else {
+            priceLabel.text = "\(post.priceValue) AZN"
+        }
+        
+        locationLabel.text = post.locationLabel
     }
 }

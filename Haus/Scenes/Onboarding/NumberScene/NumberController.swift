@@ -191,17 +191,21 @@ class NumberController: UIViewController , UITextFieldDelegate  {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         
-        if text.count >= 11{
-            nextButton.isEnabled = true
-            nextButton.backgroundColor = .mainBlueColor
-        }
-        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-        textField.text = String.format(with: "XX XXX XX XX", phone: newString)
+        let newText = (text as NSString).replacingCharacters(in: range, with: string)
         
-        viewModel.updateMobileNumber(newString)
+        let startsWithValidPrefix = newText.hasPrefix("70") || newText.hasPrefix("55") || newText.hasPrefix("50") || newText.hasPrefix("51")
+        let isValidLength = newText.count >= 12
+        
+        nextButton.isEnabled = startsWithValidPrefix && isValidLength
+        nextButton.backgroundColor = nextButton.isEnabled ? .mainBlueColor : .grayColor3
+        
+        textField.text = String.format(with: "XX XXX XX XX", phone: newText)
+        
+        viewModel.updateMobileNumber(newText)
         
         return false
     }
+    
     
     func setTermsAndPrivacyText() {
         let termsLink = "İstifadə Qaydaları"

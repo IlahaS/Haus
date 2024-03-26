@@ -1,0 +1,85 @@
+[
+{
+    "isSuccessfull": "true",
+    "statusCode": 200,
+    "messages": [
+        "There will be error message list here"
+    ],
+    "data": {
+        "id": 12332,
+        "price": 1232,
+        "pricePerSquare": 123,
+        "square": 23,
+        "roomCount": 2,
+        "floor": 3,
+        "buildingFloor": 17,
+        "latitude": 12321.2312,
+        "longitude": 12321.444,
+        "city": "Baku",
+        "district": "Sabail",
+        "address": "test address",
+        "description": "Test",
+        "metroStation": "test",
+        "hasDocument": true,
+        "availableForMortgage": true,
+        "viewCount": 232,
+        "user": {
+            "id": 123,
+            "name": "test",
+            "phoneNumber": "12321"
+        },
+        "propertyTypeId": 1232,
+        "files": [
+            "https://bina.azstatic.com/uploads/full/2023%2F10%2F25%2F08%2F47%2F37%2F63f3ec53-d444-45d5-9499-8aa755fc3638%2F3767_e-xoLRJ7Ptn0UTt-HtY6bA.jpg",
+            "https://bina.azstatic.com/uploads/full/2023%2F10%2F25%2F08%2F47%2F36%2F7af25375-10c5-4459-a9cd-3e120b2732bd%2F3791_CU9ZqnJFkAH_emVwLm8ILA.jpg"
+        ],
+        "createdAt": "2019-06-27 15:15:36.3733333"
+    }
+},
+{
+    "isSuccessfull": "true",
+    "statusCode": 200,
+    "messages": [
+        "There will be error message list here"
+    ],
+    "data": {
+        "indexFrom": 0,
+        "pageIndex": 1,
+        "pageSize": 20,
+        "totalCount": 200,
+        "totalPages": 10,
+        "items": [
+            {
+                "id": 12332,
+                "price": 1232,
+                "pricePerSquare": 123,
+                "square": 23,
+                "roomCount": 2,
+                "floor": 3,
+                "buildingFloor": 17,
+                "latitude": 12321.2312,
+                "longitude": 12321.444,
+                "city": "Baku",
+                "district": "Sabail",
+                "address": "test address",
+                "description": "Test",
+                "metroStation": "test",
+                "hasDocument": true,
+                "availableForMortgage": true,
+                "viewCount": 232,
+                "user": {
+                    "id": 123,
+                    "name": "test",
+                    "phoneNumber": "12321"
+                },
+                "propertyTypeId": 1232,
+                "files": [
+                    "https://bina.azstatic.com/uploads/full/2023%2F10%2F25%2F08%2F47%2F37%2F63f3ec53-d444-45d5-9499-8aa755fc3638%2F3767_e-xoLRJ7Ptn0UTt-HtY6bA.jpg",
+                    "https://bina.azstatic.com/uploads/full/2023%2F10%2F25%2F08%2F47%2F36%2F7af25375-10c5-4459-a9cd-3e120b2732bd%2F3791_CU9ZqnJFkAH_emVwLm8ILA.jpg"
+                ],
+                "createdAt": "2019-06-27 15:15:36.3733333"
+            }
+        ]
+    }
+}
+]

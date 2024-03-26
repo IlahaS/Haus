@@ -75,11 +75,11 @@ class PostDiscoverView: UIView{
         super.init(frame: frame)
         setupPostDiscoverView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupPostDiscoverView() {
         
         homeButton.setImage(UIImage(named: "HomeBlack"), for: .normal)

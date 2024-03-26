@@ -1,7 +1,7 @@
 
 import UIKit
 
-class AgentAccountController: UIViewController{
+class AgentAccountController: UIViewController, UITextFieldDelegate{
     
     var builder = UserBuilder()
     
@@ -64,6 +64,8 @@ class AgentAccountController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        userNameTextField.delegate = self
+        
         setupUI()
     }
     
@@ -119,16 +121,48 @@ class AgentAccountController: UIViewController{
         
     }
     
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == userNameTextField {
+            if textField.text?.isEmpty ?? true {
+                textField.text = "@"
+            }
+        }
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == userNameTextField {
+            nextButton.isEnabled = !(textField.text?.isEmpty ?? true) && textField.text != "@"
+        } else {
+            nextButton.isEnabled = !(emailTextField.text?.isEmpty ?? true) && !(nameOrAgencyTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
+        }
         
-        nextButton.isEnabled = !(emailTextField.text?.isEmpty ?? true) && !(nameOrAgencyTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
+        if let email = emailTextField.text {
+            nextButton.isEnabled = nextButton.isEnabled && isValidEmail(email)
+        }
+        
+        nextButton.backgroundColor = nextButton.isEnabled ? .mainBlueColor : .grayColor3
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == userNameTextField {
+            let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+            if newText.isEmpty {
+                return false
+            }
+        }
+        return true
     }
     
     func goToAccountScreen() {
         let vc = AgentPhotoController()
-//        builder.withName(nameOrAgencyTextField.text ?? "")
-//        builder.withName(nameOrAgencyTextField.text ?? "")
-//        builder.withName(nameOrAgencyTextField.text ?? "")
+        //        builder.withName(nameOrAgencyTextField.text ?? "")
+        //        builder.withName(nameOrAgencyTextField.text ?? "")
+        //        builder.withName(nameOrAgencyTextField.text ?? "")
         
         let builder = builder
             .withEmail(emailTextField.text ?? "")

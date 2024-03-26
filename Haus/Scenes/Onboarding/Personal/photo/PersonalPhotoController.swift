@@ -2,7 +2,7 @@
 
 import UIKit
 
-class PersonalPhotoController: UIViewController{
+class PersonalPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     
     var builder = UserBuilder()
     
@@ -18,37 +18,37 @@ class PersonalPhotoController: UIViewController{
     }()
     
     let personImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.backgroundColor = .grayColor2
-            imageView.layer.cornerRadius = 86
-            imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
-
+        let imageView = UIImageView()
+        imageView.backgroundColor = .grayColor2
+        imageView.layer.cornerRadius = 86
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     let personSymbol: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "person.fill")
-            imageView.tintColor = .black
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "person.fill")
+        imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
+        return imageView
+    }()
     
     private lazy var plusButton: UIButton = {
-            let button = UIButton(type: .system)
+        let button = UIButton(type: .system)
         button.backgroundColor = .mainBlueColor
         button.layer.cornerRadius = 20
-            button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
-            return button
-        }()
+        button.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     let plusSymbol: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "plus")
-            imageView.tintColor = .white
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "plus")
+        imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
+        return imageView
+    }()
     
     private lazy var nextButton: ReusableButton = {
         let button = ReusableButton(title: "Davam et", color: .mainBlueColor) { [weak self] in
@@ -104,10 +104,10 @@ class PersonalPhotoController: UIViewController{
         }
         
         view.addSubview(plusButton)
-            plusButton.snp.makeConstraints { make in
-                make.width.height.equalTo(40)
-                make.bottom.trailing.equalTo(personImageView).offset(-8)
-            }
+        plusButton.snp.makeConstraints { make in
+            make.width.height.equalTo(40)
+            make.bottom.trailing.equalTo(personImageView).offset(-8)
+        }
         
         view.addSubview(plusSymbol)
         plusSymbol.snp.makeConstraints { make in
@@ -124,26 +124,36 @@ class PersonalPhotoController: UIViewController{
     }
     
     @objc func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
-            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("Camera not available")
+            }
         }
         
         let galleryAction = UIAlertAction(title: "Gallery", style: .default) { _ in
-            
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
+        
         alertController.addAction(cameraAction)
         alertController.addAction(galleryAction)
         alertController.addAction(cancelAction)
-
+        
         present(alertController, animated: true, completion: nil)
     }
-
+    
+    
     func goToAccountScreen(){
         
         let scene = self.sceneDelegate
@@ -152,13 +162,32 @@ class PersonalPhotoController: UIViewController{
 }
 
 extension UIViewController {
-        var appDelegate: AppDelegate {
+    var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
     var sceneDelegate: SceneDelegate? {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let delegate = windowScene.delegate as? SceneDelegate else { return nil }
-         return delegate
+              let delegate = windowScene.delegate as? SceneDelegate else { return nil }
+        return delegate
+    }
+}
+
+extension PersonalPhotoController {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[.editedImage] as? UIImage {
+            personImageView.image = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            personImageView.image = originalImage
+        }
+        personSymbol.isHidden = true
+        dismiss(animated: true, completion: nil)
+        
+        nextButton.isEnabled = true
+        nextButton.backgroundColor = .mainBlueColor
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

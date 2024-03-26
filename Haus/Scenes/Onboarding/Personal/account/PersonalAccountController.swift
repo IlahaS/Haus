@@ -2,14 +2,14 @@
 
 import UIKit
 
-class PersonalAccountController: UIViewController{
+class PersonalAccountController: UIViewController, UITextFieldDelegate{
     
     var viewModel: PersonalAccountViewModel
     
     init(viewModel: PersonalAccountViewModel, builder: UserBuilder) {
-            self.viewModel = viewModel
-            super.init(nibName: nil, bundle: nil)
-        }
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,6 +55,8 @@ class PersonalAccountController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        userNameTextField.delegate = self
+        
         setupUI()
     }
     
@@ -94,9 +96,43 @@ class PersonalAccountController: UIViewController{
             make.height.equalTo(56)
         }
     }
-    
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == userNameTextField {
+            if textField.text?.isEmpty ?? true {
+                textField.text = "@"
+            }
+        }
+    }
+
     @objc func textFieldDidChange(_ textField: UITextField) {
-        nextButton.isEnabled = !(nameTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
+        if textField == userNameTextField {
+            if let text = textField.text {
+                if text == "@" {
+                    nextButton.isEnabled = false
+                    nextButton.backgroundColor = .grayColor3
+                } else if text.isEmpty {
+                    nextButton.isEnabled = false
+                    nextButton.backgroundColor = .grayColor3
+                } else {
+                    nextButton.isEnabled = true
+                    nextButton.backgroundColor = .mainBlueColor
+                }
+            }
+        } else {
+            nextButton.isEnabled = !(nameTextField.text?.isEmpty ?? true) && !(userNameTextField.text?.isEmpty ?? true)
+            nextButton.backgroundColor = nextButton.isEnabled ? .mainBlueColor : .grayColor3
+        }
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == userNameTextField, let text = textField.text, range.location == 0, range.length == 1, string.isEmpty {
+            textField.text = "@"
+            return false
+        }
+        return true
     }
     
     func goToAccountScreen() {
@@ -104,7 +140,7 @@ class PersonalAccountController: UIViewController{
         let vc = PersonalPhotoController(builder: viewModel.builder
             .withName(nameTextField.text ?? "")
             .withUsername(userNameTextField.text ?? ""))
-
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

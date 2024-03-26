@@ -31,10 +31,10 @@ class RentTypeCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     }()
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
+        super.init(frame: frame)
         backgroundColor = .orange
-            setupUI()
-        }
+        setupUI()
+    }
     
     
     
@@ -43,11 +43,11 @@ class RentTypeCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     }
     
     private func setupUI() {
-            addSubview(collectionView)
-            collectionView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+        addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         4
@@ -65,12 +65,12 @@ class RentTypeCell: UICollectionViewCell, ConfigurableCell, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //        return CGSize(width: width, height: 110)
         return CGSize(width: 105, height: 110)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-             .init(top: 10, left: 16, bottom: 10, right: 16)
-     }
+        .init(top: 10, left: 16, bottom: 10, right: 16)
+    }
     
     func configure() {
         
@@ -110,7 +110,7 @@ class TypeCell: UICollectionViewCell{
     private func setupSubviews() {
         addSubview(imageView)
         addSubview(titleLabel)
-            
+        
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview()

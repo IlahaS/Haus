@@ -2,7 +2,7 @@
 
 import UIKit
 
-class AgentPhotoController: UIViewController{
+class AgentPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     
     var builder = UserBuilder()
     
@@ -29,7 +29,7 @@ class AgentPhotoController: UIViewController{
             let imageView = UIImageView()
             imageView.image = UIImage(systemName: "person.fill")
             imageView.tintColor = .black
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
             return imageView
         }()
     
@@ -111,28 +111,68 @@ class AgentPhotoController: UIViewController{
     }
     
     @objc func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
-            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                print("Camera not available")
+            }
         }
         
         let galleryAction = UIAlertAction(title: "Gallery", style: .default) { _ in
-            
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
+        
         alertController.addAction(cameraAction)
         alertController.addAction(galleryAction)
         alertController.addAction(cancelAction)
-
+        
         present(alertController, animated: true, completion: nil)
     }
     
     func goToAccountScreen(){
         let scene = self.sceneDelegate
         scene?.switchToTabViewController()
+    }
+}
+
+//extension UIViewController {
+//    var appDelegateAgent: AppDelegate {
+//        return UIApplication.shared.delegate as! AppDelegate
+//    }
+//    
+//    var sceneDelegateAgent: SceneDelegate? {
+//        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//              let delegate = windowScene.delegate as? SceneDelegate else { return nil }
+//        return delegate
+//    }
+//}
+
+extension AgentPhotoController {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[.editedImage] as? UIImage {
+            personImageView.image = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            personImageView.image = originalImage
+        }
+        personSymbol.isHidden = true
+        dismiss(animated: true, completion: nil)
+        
+        nextButton.isEnabled = true
+        nextButton.backgroundColor = .mainBlueColor
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
