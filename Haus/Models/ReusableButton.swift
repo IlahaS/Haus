@@ -31,7 +31,7 @@ class ReusableButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI(){
+    private func setupUI() {
         backgroundColor = color
         layer.cornerRadius = 10
         layer.masksToBounds = true
@@ -44,7 +44,7 @@ class ReusableButton: UIButton{
         
     }
     
-    @objc private func buttonClicked(){
+    @objc private func buttonClicked() {
         onAction()
     }
     

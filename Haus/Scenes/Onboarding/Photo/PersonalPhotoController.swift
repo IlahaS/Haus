@@ -152,9 +152,9 @@ class PersonalPhotoController: UIViewController, UIImagePickerControllerDelegate
         
         present(alertController, animated: true, completion: nil)
     }
-    
-    
-    func goToAccountScreen(){
+        
+    func goToAccountScreen() {
+        UserDefaults.standard.setValue(true, forKey: "loggedIn")
         
         let scene = self.sceneDelegate
         scene?.switchToTabViewController()

@@ -130,4 +130,3 @@ extension PropertyCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return CGSize(width: (collectionView.frame.width - 12) / 2, height: 201)
     }
 }
-

@@ -23,6 +23,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -30,30 +31,32 @@ class ProfileController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
-        
+        setupUI()
+    }
+    
+    private func setupUI() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let statusBarManager = windowScene.statusBarManager {
+            let statusBarView = UIView(frame: statusBarManager.statusBarFrame)
+            statusBarView.backgroundColor = .white
+            view.addSubview(statusBarView)
+        }
     }
     
     private func setupCollectionView() {
-        
-        
         collectionView.register(PostCell.self, forCellWithReuseIdentifier: "postCollectionCell")
-        
         collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
         collectionView.register(ProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(ProfileHeaderView.self)")
         //postDiscoverView.delegate = collectionView.headerView
-        
     }
 }
 
 extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isDiscoverButtonSelected{
+        if isDiscoverButtonSelected {
             return reels.count
-        } else{
-            return images.count
         }
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -85,10 +88,9 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if isDiscoverButtonSelected {
-            .init(top: 0, left: 0, bottom: 0, right: 0)
-        }else{
-            .init(top: 0, left: 13, bottom: 0, right: 13)
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
         }
+        return .init(top: 0, left: 13, bottom: 0, right: 13)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -96,20 +98,17 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
         headerView.delegate = self
         return headerView
     }
-    
 }
 extension ProfileController: ProfileHeaderViewDelegate {
     func didSelectDiscoverButton() {
         isDiscoverButtonSelected = true
         collectionView.reloadData()
         //postDiscoverView.didSelectDiscoverButton?()
-        
     }
     
     func didSelectHomeButton() {
         isDiscoverButtonSelected = false
         collectionView.reloadData()
         //postDiscoverView.didSelectHomeButton?()
-        
     }
 }

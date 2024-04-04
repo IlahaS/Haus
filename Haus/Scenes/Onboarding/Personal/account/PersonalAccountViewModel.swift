@@ -14,7 +14,7 @@ class PersonalAccountViewModel {
 
     var builder: UserBuilder
     
-    init(builder: UserBuilder){
+    init(builder: UserBuilder) {
         self.builder = builder
     }
     

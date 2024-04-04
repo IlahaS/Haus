@@ -13,7 +13,6 @@ protocol ProfileHeaderViewDelegate: AnyObject {
     func didSelectDiscoverButton()
 }
 
-
 class ProfileHeaderView: UICollectionReusableView {
 
     let identifier = "profileHeader"
@@ -30,8 +29,7 @@ class ProfileHeaderView: UICollectionReusableView {
         setupUI()
     }
 
-    func setupUI(){
-
+    func setupUI() {
         addSubview(headerView)
         headerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()

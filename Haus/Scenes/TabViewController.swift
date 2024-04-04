@@ -3,16 +3,16 @@ import UIKit
 
 final class TabViewController: UITabBarController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpTabs()
         customizeTabBarAppearance()
     }
     
-    
-    private func setUpTabs(){
+    private func setUpTabs() {
         let home = self.createNav(with: "Elanlar", and: UIImage(systemName: "house") ?? .mainScreenLogo, and: HomeController())
         let discover = self.createNav(with: "Kəşf et", and: UIImage(systemName: "play.rectangle") ?? .flag, and: DiscoverController())
         let profile = self.createNav(with: "Profil", and: UIImage(systemName: "person") ?? .flag, and: ProfileController())

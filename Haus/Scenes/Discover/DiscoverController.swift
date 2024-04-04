@@ -1,7 +1,7 @@
 
 import UIKit
 import SnapKit
-//import SkeletonView
+import SkeletonView
 
 class DiscoverController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -15,12 +15,12 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         
         //navigationController?.navigationBar.backgroundColor = .red
         setupCollectionView()
+        
         setupSwipeGesture()
         setupViewModelCallbacks()
         viewModel.fetchVideos()
-        collectionView.reloadData()
         
-        
+        collectionView.showAnimatedGradientSkeleton()
     }
     
     private func setupViewModelCallbacks() {
@@ -29,6 +29,7 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         viewModel.success = { [weak self] in
+            self?.collectionView.hideSkeleton()
             self?.collectionView.reloadData()
         }
     }
@@ -39,8 +40,6 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         tabBarController?.tabBar.barTintColor = .black
         tabBarController?.tabBar.tintColor = .white
         tabBarController?.tabBar.unselectedItemTintColor = .gray
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,17 +73,15 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             //.offset(-tabBarController!.tabBar.frame.height)
         }
-        
     }
     
     func setupSwipeGesture() {
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
-        swipeGesture.direction = .down
-        collectionView.addGestureRecognizer(swipeGesture)
+//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+//        swipeGesture.direction = .down
+//        collectionView.addGestureRecognizer(swipeGesture)
     }
     
     @objc func handleSwipeGesture() {
-        
         print("Swiped down - load new video")
     }
     
@@ -103,7 +100,6 @@ class DiscoverController: UIViewController, UICollectionViewDataSource, UICollec
         return collectionView.bounds.size
     }
 }
-
 
 extension UIColor {
     static func random() -> UIColor {

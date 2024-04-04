@@ -1,9 +1,6 @@
-
-
 import UIKit
 
-class TitleView: UIView {
-    
+class TitleView: UIView {    
     private let headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -70,7 +67,7 @@ class TitleView: UIView {
         }
     }
     @objc private func plusButtonTapped() {
-        
+        print("plus button tapped")
     }
     
     @objc private func settingsButtonTapped() {

@@ -8,8 +8,8 @@ class OtpController: UIViewController {
     var enteredOTP = "" {
         didSet {
             updateNextButtonState()
-            }
         }
+    }
     
     let descLabel: UILabel = {
         let label = UILabel()
@@ -81,9 +81,9 @@ class OtpController: UIViewController {
         return button
     }()
     
-    @objc func goToAccountScreen(){
-        let accountController = SelectAccountController(viewModel: .init(builder: viewModel.builder), builder: viewModel.builder)
-        
+    @objc func goToAccountScreen() {
+        let accountController = SelectAccountController(viewModel: .init(builder: viewModel.builder), 
+                                                        builder: viewModel.builder)
         navigationController?.pushViewController(accountController, animated: true)
     }
     
@@ -243,6 +243,6 @@ extension OtpController: UITextFieldDelegate {
     }
     
     private func nextButtonAction() {
-            goToAccountScreen()
-        }
+        goToAccountScreen()
+    }
 }

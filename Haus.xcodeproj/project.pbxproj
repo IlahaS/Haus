@@ -19,7 +19,6 @@
 		387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C52B849E59008FB7FD /* DiscoverViewModel.swift */; };
 		387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C72B849F2E008FB7FD /* VideoCell.swift */; };
 		38B6B8052B8D289C00A748F4 /* RentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */; };
-		38B6B8072B8E862700A748F4 /* TopSearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8062B8E862700A748F4 /* TopSearchBarCell.swift */; };
 		38B6B8092B8F849A00A748F4 /* SearchPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */; };
 		38B6B80C2B8F868900A748F4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B80B2B8F868900A748F4 /* HomeViewModel.swift */; };
 		38B6B80E2B908F9500A748F4 /* AccountTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B80D2B908F9500A748F4 /* AccountTypeCell.swift */; };
@@ -59,6 +58,7 @@
 		38D2DD7D2B864AD1007BA024 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38D2DD7F2B864AD1007BA024 /* Localizable.strings */; };
 		38D2DD842B878C8C007BA024 /* MockkJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 38D2DD832B878C8C007BA024 /* MockkJSON.json */; };
 		38D2DD862B87E764007BA024 /* DatabaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D2DD852B87E764007BA024 /* DatabaseAdapter.swift */; };
+		38DAA9C82BB41042002FE620 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 38DAA9C72BB41042002FE620 /* SkeletonView */; };
 		38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351A2B51756B00E9DA40 /* AppDelegate.swift */; };
 		38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */; };
 		38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351E2B51756B00E9DA40 /* FirstController.swift */; };
@@ -103,7 +103,6 @@
 		387236C52B849E59008FB7FD /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		387236C72B849F2E008FB7FD /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTypeCell.swift; sourceTree = "<group>"; };
-		38B6B8062B8E862700A748F4 /* TopSearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchBarCell.swift; sourceTree = "<group>"; };
 		38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPropertyCell.swift; sourceTree = "<group>"; };
 		38B6B80B2B8F868900A748F4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		38B6B80D2B908F9500A748F4 /* AccountTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeCell.swift; sourceTree = "<group>"; };
@@ -165,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38FB35692B52FF0200E9DA40 /* SnapKit-Dynamic in Frameworks */,
+				38DAA9C82BB41042002FE620 /* SkeletonView in Frameworks */,
 				38FB35612B52C96A00E9DA40 /* Alamofire in Frameworks */,
 				38FB35672B52FF0200E9DA40 /* SnapKit in Frameworks */,
 				38FB355A2B52C94000E9DA40 /* Kingfisher in Frameworks */,
@@ -216,7 +216,6 @@
 		38B6B8032B8D286200A748F4 /* HomeCells */ = {
 			isa = PBXGroup;
 			children = (
-				38B6B8062B8E862700A748F4 /* TopSearchBarCell.swift */,
 				38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */,
 				38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */,
 				38B6B80F2B98F37500A748F4 /* CategoryCell.swift */,
@@ -240,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				38D20DFA2B7C142200ECF628 /* account */,
-				38D20DFB2B7C142D00ECF628 /* photo */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -336,12 +334,12 @@
 			path = account;
 			sourceTree = "<group>";
 		};
-		38D20DFB2B7C142D00ECF628 /* photo */ = {
+		38D20DFB2B7C142D00ECF628 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
 				38D20DD32B66D13B00ECF628 /* PersonalPhotoController.swift */,
 			);
-			path = photo;
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		38D20E072B811C2A00ECF628 /* HeaderView */ = {
@@ -415,6 +413,7 @@
 				38D20DEE2B6ADF4A00ECF628 /* AccountScene */,
 				38D20DCD2B659B6000ECF628 /* Personal */,
 				38D20DCE2B659B8400ECF628 /* Agency */,
+				38D20DFB2B7C142D00ECF628 /* Photo */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -442,6 +441,7 @@
 				38FB35662B52FF0200E9DA40 /* SnapKit */,
 				38FB35682B52FF0200E9DA40 /* SnapKit-Dynamic */,
 				38D20DC72B59440D00ECF628 /* SkyFloatingLabelTextField */,
+				38DAA9C72BB41042002FE620 /* SkeletonView */,
 			);
 			productName = Hous;
 			productReference = 38FB35172B51756B00E9DA40 /* Haus.app */;
@@ -601,7 +601,6 @@
 				38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */,
 				38D20DC52B58014600ECF628 /* OtpController.swift in Sources */,
 				38D20DC32B58013300ECF628 /* NumberController.swift in Sources */,
-				38B6B8072B8E862700A748F4 /* TopSearchBarCell.swift in Sources */,
 				38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */,
 				38D20DE52B684DDF00ECF628 /* UserBuilder.swift in Sources */,
 				38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */,
@@ -1023,6 +1022,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 38D20DC62B59440D00ECF628 /* XCRemoteSwiftPackageReference "SkyFloatingLabelTextField" */;
 			productName = SkyFloatingLabelTextField;
+		};
+		38DAA9C72BB41042002FE620 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3845B06F2BB388D00017D9FB /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		38FB35592B52C94000E9DA40 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

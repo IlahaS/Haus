@@ -20,5 +20,125 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66EAEA40-3B63-4362-ABD3-66F29BAE3A74"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "goToNotification()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33493EAA-7FE1-4805-BD60-F5CD01D725B4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "notificationButton"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "notificationButton"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E - 358ad14578c881e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Haus.TopSearchBarCell.notificationButton.getter : __C.UIButton"
+                  moduleName = "Haus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Haus/Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E - fcbbab197006af6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.UIButton in Haus.TopSearchBarCell.notificationButton.getter : __C.UIButton"
+                  moduleName = "Haus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Haus/Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E - 12fc0e3ec1f1b1f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Haus.TopSearchBarCell.notificationButton.setter : __C.UIButton"
+                  moduleName = "Haus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Haus/Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E - ccb3217282d9d5e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Haus.TopSearchBarCell.notificationButton.modify : __C.UIButton"
+                  moduleName = "Haus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Haus/Haus/Scenes/Home/HomeCells/TopSearchBarCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14">
+               </Location>
+               <Location
+                  uuid = "7AA0F172-1597-4FB8-AEEE-7C2607B9957E - 3070a896c680f893"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Haus.TopSearchBarCell.notificationButton.modify : __C.UIButton with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Haus"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilahesamedova/Downloads/Workspace/Haus/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

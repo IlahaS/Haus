@@ -8,7 +8,6 @@
 import Foundation
 
 class HomeViewModel {
-    
     enum HomeCellItem {
         case propertyType([String]?)
         case propertySearch(String?)

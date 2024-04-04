@@ -95,7 +95,6 @@ class LatestCell: UICollectionViewCell{
             make.bottom.equalToSuperview()
         }
     }
-    
 }
 
 extension LatestCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

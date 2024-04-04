@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import SkeletonView
 
 protocol ConfigurableCell{
     static var identifier: String { get set }
@@ -20,8 +21,10 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        
         setupUI()
         fetchData()
     }
@@ -36,8 +39,8 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         viewModel.error = { errorMessage in
             print("Error: \(errorMessage)")
         }
-        
         viewModel.success = { [weak self] in
+            self?.collectionView.hideSkeleton()
             self?.collectionView.reloadData()
         }
     }
@@ -47,6 +50,7 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
         notificationButton.setImage(UIImage(systemName: "bell"), for: .normal)
         notificationButton.contentMode = .scaleAspectFit
         notificationButton.tintColor = .black
+        notificationButton.addTarget(self, action: #selector(goToNotificationScreen), for: .touchUpInside)
         view.addSubview(searchBar)
         view.addSubview(notificationButton)
         
@@ -89,6 +93,10 @@ class HomeController: UIViewController, UICollectionViewDelegate, UICollectionVi
             make.top.equalTo(searchBar.snp.bottom).offset(6)
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    @objc func goToNotificationScreen(){
+        print("notif is clicked")
     }
     
     // MARK: - UICollectionViewDataSource

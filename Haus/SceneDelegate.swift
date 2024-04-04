@@ -18,15 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if UserDefaults.standard.bool(forKey: "loggedIn") {
             switchToTabViewController()
-            window?.makeKeyAndVisible()
-        }
-        else {
+        } else {
             let firstController = FirstController()
             let navigationController = UINavigationController(rootViewController: firstController)
             window?.rootViewController = navigationController
-            
+            window?.makeKeyAndVisible()
         }
-        window?.makeKeyAndVisible()
     }
     
     func switchToTabViewController() {
@@ -42,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        //(UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
     

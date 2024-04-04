@@ -26,19 +26,6 @@ class SelectAccountController: UIViewController{
         return label
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //collectionView.backgroundColor = .gray
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(AccountTypeCell.self, forCellWithReuseIdentifier: AccountTypeCell.identifier)
-        
-        return collectionView
-    }()
-    
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "İstifadəçi kateqoriyası:"
@@ -48,6 +35,18 @@ class SelectAccountController: UIViewController{
         return label
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        //collectionView.backgroundColor = .gray
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(AccountTypeCell.self, forCellWithReuseIdentifier: AccountTypeCell.identifier)
+        
+        return collectionView
+    }()
     
     private lazy var nextButton: ReusableButton = {
         let button = ReusableButton(title: "Davam et", color: .mainBlueColor) {
@@ -100,8 +99,8 @@ class SelectAccountController: UIViewController{
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(50)
         }
-        
     }
+    
     private func toggleButtonState(for accountType: AccountType) {
         guard let index = viewModel.selectedAccountType.firstIndex(of: accountType) else {
             return
@@ -112,15 +111,14 @@ class SelectAccountController: UIViewController{
         nextButton.isEnabled = true
     }
     
-    
-    private func presentViewControllerFor(accountType: AccountType, builder: UserBuilder) {
+    private func presentViewControllerFor(accountType: AccountType/*, builder: UserBuilder*/) {
         switch accountType {
         case .personal:
             let personalVC = PersonalAccountController(viewModel: .init(builder: viewModel.builder), builder: viewModel.builder)
             navigationController?.pushViewController(personalVC, animated: true)
         case .agent:
             let agentVC = AgentAccountController()
-            agentVC.builder = builder
+            agentVC.builder = viewModel.builder //builder
             navigationController?.pushViewController(agentVC, animated: true)
         }
     }
@@ -128,14 +126,12 @@ class SelectAccountController: UIViewController{
     func goToAccountScreen() {
         if let selectedAccountIndex = viewModel.selectedAccountIndex {
             let builder = viewModel.builder.withAccountType(viewModel.selectedAccountType[selectedAccountIndex])
-            
-            presentViewControllerFor(accountType: viewModel.selectedAccountType[selectedAccountIndex], builder: builder)
+            presentViewControllerFor(accountType: viewModel.selectedAccountType[selectedAccountIndex])//, builder: builder)
         }
     }
 }
 
 extension SelectAccountController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/2-5 , height: 164)
     }
@@ -163,5 +159,4 @@ extension SelectAccountController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         toggleButtonState(for: AccountType(rawValue: indexPath.item) ?? .personal)
     }
-    
 }

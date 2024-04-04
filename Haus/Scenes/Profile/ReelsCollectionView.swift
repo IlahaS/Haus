@@ -29,17 +29,17 @@ class ReelsCollectionView: UIViewController {
     }
     
     private func setupCollectionView() {
-            collectionView.delegate = self
-            collectionView.dataSource = self
-
-            collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
-
-            view.addSubview(collectionView)
-
-            collectionView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
+        
+        view.addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+    }
 }
 
 extension ReelsCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -51,7 +51,6 @@ extension ReelsCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelsCell", for: indexPath) as! ReelsCell
         
-       
         return cell
     }
     
@@ -59,5 +58,3 @@ extension ReelsCollectionView: UICollectionViewDelegate, UICollectionViewDataSou
         return CGSize(width: (collectionView.frame.width - 32) / 2, height: 201)
     }
 }
-
-

@@ -128,7 +128,7 @@ class PersonalAccountController: UIViewController, UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == userNameTextField, let text = textField.text, range.location == 0, range.length == 1, string.isEmpty {
+        if textField == userNameTextField, let _ = textField.text, range.location == 0, range.length == 1, string.isEmpty {
             textField.text = "@"
             return false
         }
@@ -136,12 +136,9 @@ class PersonalAccountController: UIViewController, UITextFieldDelegate{
     }
     
     func goToAccountScreen() {
-        
         let vc = PersonalPhotoController(builder: viewModel.builder
             .withName(nameTextField.text ?? "")
             .withUsername(userNameTextField.text ?? ""))
-        
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }

@@ -60,11 +60,21 @@ class VideoCell: UICollectionViewCell {
     }()
     
     var isDescriptionExpanded = false
+    var isPlaying = true
     
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
+        setupTapGesture()
         
     }
     
@@ -86,6 +96,14 @@ class VideoCell: UICollectionViewCell {
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(2)
         }
+        
+        //play button
+        addSubview(playButton)
+        playButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(100)
+        }
+        playButton.isHidden = true
         
         //shareStackView
         let shareLabel = UILabel()
@@ -121,7 +139,6 @@ class VideoCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(16)
         }
         
-
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(logoImageView.snp.trailing).offset(8)
@@ -143,13 +160,36 @@ class VideoCell: UICollectionViewCell {
     
     @objc func descriptionLabelTapped() {
         toggleDescriptionExpansion()
+        playButton.isHidden = isDescriptionExpanded
+    }
+    
+    @objc private func playButtonTapped() {
+        if let player = player {
+            if player.rate == 0 { // Paused
+                player.play()
+                playButton.isHidden = true
+            } else { // Playing
+                player.pause()
+                playButton.isHidden = false
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        
+        if isDescriptionExpanded && !descriptionLabel.frame.contains(location) {
+            toggleDescriptionExpansion()
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         playerView.frame = contentView.bounds
     }
-
+    
     func configure(with video: Item, fileName: String) {
         guard let path = Bundle.main.path(forResource: fileName, ofType: "mp4") else {
             return
@@ -166,7 +206,7 @@ class VideoCell: UICollectionViewCell {
         self.titleLabel.text = "realemlak"
         self.descriptionLabel.text = video.description
     }
-
+    
     
     func toggleDescriptionExpansion() {
         isDescriptionExpanded.toggle()
@@ -175,5 +215,37 @@ class VideoCell: UICollectionViewCell {
         } else {
             descriptionLabel.numberOfLines = 2
         }
+    }
+    
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        contentView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTap() {
+        if isPlaying {
+            pauseVideo()
+            showPlayButton()
+        } else {
+            playVideo()
+            hidePlayButton()
+        }
+        isPlaying.toggle()
+    }
+    
+    private func playVideo() {
+        player?.play()
+    }
+    
+    private func pauseVideo() {
+        player?.pause()
+    }
+    
+    private func showPlayButton() {
+        playButton.isHidden = false
+    }
+    
+    private func hidePlayButton() {
+        playButton.isHidden = true
     }
 }
