@@ -7,11 +7,11 @@ class OtpViewModel {
     
     var mobileNumber: String?
     var enteredOTP: String = ""
-    var builder: UserBuilder
+    var builder = UserBuilder()
     
-    init(builder: UserBuilder) {
-        self.builder = builder
-    }
+//    init(builder: UserBuilder) {
+//        self.builder = builder
+//    }
     
     var isNextButtonEnabled: Bool {
         return enteredOTP.count == 4

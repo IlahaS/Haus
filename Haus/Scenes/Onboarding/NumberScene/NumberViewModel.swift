@@ -8,11 +8,11 @@
 import Foundation
 
 class NumberViewModel {
-    var userBuilder: UserBuilder
+    var userBuilder = UserBuilder()
     
-    init(builder: UserBuilder) {
-        self.userBuilder = builder
-    }
+//    init(builder: UserBuilder) {
+//        self.userBuilder = builder
+//    }
     
     func updateMobileNumber(_ number: String) {
         userBuilder = userBuilder.withMobileNumber(number)

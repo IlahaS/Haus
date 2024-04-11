@@ -3,7 +3,7 @@ import SnapKit
 
 class OtpController: UIViewController {
    
-    var viewModel = OtpViewModel(builder: .init())
+    var viewModel = OtpViewModel()
     
     var enteredOTP = "" {
         didSet {

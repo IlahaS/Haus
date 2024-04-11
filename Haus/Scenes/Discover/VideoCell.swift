@@ -12,6 +12,8 @@ class VideoCell: UICollectionViewCell {
     static let identifier = "VideoCell"
     var viewModel = DiscoverViewModel()
     var player: AVPlayer?
+    var isDescriptionExpanded = false
+    var isPlaying = true
     
     var playerView: AVPlayerLayer! = {
         let view = AVPlayerLayer()
@@ -59,23 +61,20 @@ class VideoCell: UICollectionViewCell {
         return button
     }()
     
-    var isDescriptionExpanded = false
-    var isPlaying = true
-    
     private lazy var playButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
-        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.setImage(UIImage(named: "play"), for: .normal)
         button.tintColor = .white
+        
         button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupSubviews()
         setupTapGesture()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -160,7 +159,7 @@ class VideoCell: UICollectionViewCell {
     
     @objc func descriptionLabelTapped() {
         toggleDescriptionExpansion()
-        playButton.isHidden = isDescriptionExpanded
+        playButton.isHidden = true
     }
     
     @objc private func playButtonTapped() {
@@ -182,6 +181,7 @@ class VideoCell: UICollectionViewCell {
         
         if isDescriptionExpanded && !descriptionLabel.frame.contains(location) {
             toggleDescriptionExpansion()
+            playButton.isHidden = true
         }
     }
     
@@ -207,12 +207,12 @@ class VideoCell: UICollectionViewCell {
         self.descriptionLabel.text = video.description
     }
     
-    
     func toggleDescriptionExpansion() {
         isDescriptionExpanded.toggle()
         if isDescriptionExpanded {
             descriptionLabel.numberOfLines = 0
         } else {
+            playButton.isHidden = true
             descriptionLabel.numberOfLines = 2
         }
     }

@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 class FuturedCell: UICollectionViewCell{
-    
     static var identifier: String = "FuturedCell"
-    
     var images = ["reel1", "reel2", "reel3", "reel1"]
     
     var titleLabel: UILabel = {

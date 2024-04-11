@@ -3,18 +3,14 @@ import UIKit
 import SnapKit
 import SkyFloatingLabelTextField
 
-class NumberController: UIViewController {
+class NumberController: UIViewController , UITextFieldDelegate  {
     
-    var viewModel: NumberViewModel //NumberViewModel(builder: UserBuilder())
+    var viewModel = NumberViewModel() //NumberViewModel(builder: UserBuilder())
     
-    init(viewModel: NumberViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: NumberViewModel) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
     
     let descLabel: UILabel = {
         let label = UILabel()
@@ -198,7 +194,7 @@ class NumberController: UIViewController {
         
         if mobileNumber.count >= 12 {
             viewModel.updateMobileNumber(mobileNumber)
-            let otpController = OtpController(viewModel: .init(builder: viewModel.userBuilder))
+            let otpController = OtpController(viewModel: OtpViewModel())
             otpController.viewModel.mobileNumber = mobileNumber
             
             DatabaseAdapter().saveMobileNumberToKeychain(mobileNumber: mobileNumber)
@@ -229,7 +225,7 @@ class NumberController: UIViewController {
     }
 }
 
-extension NumberController: UITextViewDelegate, UITextFieldDelegate {
+extension NumberController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
         if URL.scheme == "terms" {
