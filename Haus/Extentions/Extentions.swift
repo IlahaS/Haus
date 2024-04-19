@@ -23,5 +23,8 @@ extension UIColor {
     static var grayColor: UIColor {UIColor (hexString: "5E5E5E")}
     static var grayColor2: UIColor {UIColor (hexString: "EDEDED")}
     static var grayColor3: UIColor {UIColor (hexString: "7F7F7F")}
-    static var grayColor4: UIColor {UIColor (hexString: "#D4D4D4")}
+    static var grayColor4: UIColor {UIColor (hexString: "D4D4D4")}
+    static var grayColor5: UIColor {UIColor (hexString: "f4f4f5")}
+
 }
+

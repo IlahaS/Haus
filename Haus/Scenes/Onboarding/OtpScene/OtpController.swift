@@ -162,7 +162,8 @@ class OtpController: UIViewController {
             textField.textAlignment = .center
             textField.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             textField.textColor = .black
-            
+            textField.keyboardType = .phonePad
+
             textField.addTarget(self, action: #selector(textFieldEditingDidBegin(_:)), for: .editingDidBegin)
             textField.delegate = self
             return textField

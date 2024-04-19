@@ -11,6 +11,8 @@ import UIKit
 protocol ProfileHeaderViewDelegate: AnyObject {
     func didSelectHomeButton()
     func didSelectDiscoverButton()
+    func didSelectSetting()
+    func didSelectPlusButton()
 }
 
 class ProfileHeaderView: UICollectionReusableView {
@@ -57,6 +59,15 @@ class ProfileHeaderView: UICollectionReusableView {
         postDiscoverView.didSelectDiscoverButton = { [weak self] in
             self?.discoverButtonTapped()
         }
+        
+        headerView.settingsButtonTapped = { [weak self] in
+            self?.didSelectSettings()
+        }
+        
+        headerView.plussButtonTapped = { [weak self] in
+            self?.didSelectPlusButton()
+        }
+        
     }
 
     required init?(coder: NSCoder) {
@@ -69,5 +80,15 @@ class ProfileHeaderView: UICollectionReusableView {
 
     @objc private func homeButtonTapped() {
         delegate?.didSelectHomeButton()
+    }
+    
+    @objc private func didSelectSettings() {
+        delegate?.didSelectSetting()
+    }
+    
+    @objc private func didSelectPlusButton(){
+        delegate?.didSelectPlusButton()
+        print("plus button tapped")
+
     }
 }

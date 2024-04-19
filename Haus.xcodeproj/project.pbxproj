@@ -60,9 +60,12 @@
 		38D2DD862B87E764007BA024 /* DatabaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D2DD852B87E764007BA024 /* DatabaseAdapter.swift */; };
 		38DAA9C82BB41042002FE620 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 38DAA9C72BB41042002FE620 /* SkeletonView */; };
 		38DAA9D02BC7AB99002FE620 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAA9CF2BC7AB99002FE620 /* SettingsController.swift */; };
+		38DAA9D22BCAB434002FE620 /* UserStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAA9D12BCAB434002FE620 /* UserStateObserver.swift */; };
+		38DAA9D52BCD48CA002FE620 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAA9D42BCD48CA002FE620 /* Coordinator.swift */; };
+		38DAA9D82BCD4AB0002FE620 /* InitialListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAA9D72BCD4AB0002FE620 /* InitialListScreen.swift */; };
 		38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351A2B51756B00E9DA40 /* AppDelegate.swift */; };
 		38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */; };
-		38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351E2B51756B00E9DA40 /* FirstController.swift */; };
+		38FB351F2B51756B00E9DA40 /* InitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB351E2B51756B00E9DA40 /* InitialController.swift */; };
 		38FB35272B51756C00E9DA40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38FB35262B51756C00E9DA40 /* Assets.xcassets */; };
 		38FB35552B52C52A00E9DA40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FB35542B52C52A00E9DA40 /* LaunchScreen.storyboard */; };
 		38FB35572B52C85900E9DA40 /* LaunchAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 38FB35562B52C85900E9DA40 /* LaunchAnimation.json */; };
@@ -146,10 +149,13 @@
 		38D2DD832B878C8C007BA024 /* MockkJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockkJSON.json; sourceTree = "<group>"; };
 		38D2DD852B87E764007BA024 /* DatabaseAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAdapter.swift; sourceTree = "<group>"; };
 		38DAA9CF2BC7AB99002FE620 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		38DAA9D12BCAB434002FE620 /* UserStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateObserver.swift; sourceTree = "<group>"; };
+		38DAA9D42BCD48CA002FE620 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		38DAA9D72BCD4AB0002FE620 /* InitialListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialListScreen.swift; sourceTree = "<group>"; };
 		38FB35172B51756B00E9DA40 /* Haus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FB351A2B51756B00E9DA40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		38FB351E2B51756B00E9DA40 /* FirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstController.swift; sourceTree = "<group>"; };
+		38FB351E2B51756B00E9DA40 /* InitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialController.swift; sourceTree = "<group>"; };
 		38FB35262B51756C00E9DA40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38FB352B2B51756C00E9DA40 /* Haus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Haus.entitlements; sourceTree = "<group>"; };
 		38FB352C2B51756C00E9DA40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,8 +203,6 @@
 			children = (
 				383F28472BA44287002BEEB4 /* NetworkManager.swift */,
 				383F284A2BA443EF002BEEB4 /* NetworkHelper.swift */,
-				383F284C2BA4479C002BEEB4 /* Endpoints.swift */,
-				38D252922BA70BE3008D5771 /* ErrorHandler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -279,6 +283,8 @@
 		38D20DDD2B66F7DF00ECF628 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				38DAA9D62BCD4A8D002FE620 /* CreateListing */,
+				38DAA9CE2BC7AB76002FE620 /* Settings */,
 				38D20E072B811C2A00ECF628 /* HeaderView */,
 				38D20DE22B66F83300ECF628 /* ProfileController.swift */,
 				38D20DF82B7B7A5500ECF628 /* ReelsCollectionView.swift */,
@@ -323,6 +329,7 @@
 				38D20DE42B684DDF00ECF628 /* UserBuilder.swift */,
 				38FB35642B52EFD900E9DA40 /* ReusableButton.swift */,
 				38D2DD852B87E764007BA024 /* DatabaseAdapter.swift */,
+				38DAA9D12BCAB434002FE620 /* UserStateObserver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -363,6 +370,24 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		38DAA9D32BCD48AD002FE620 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				383F284C2BA4479C002BEEB4 /* Endpoints.swift */,
+				38D252922BA70BE3008D5771 /* ErrorHandler.swift */,
+				38DAA9D42BCD48CA002FE620 /* Coordinator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		38DAA9D62BCD4A8D002FE620 /* CreateListing */ = {
+			isa = PBXGroup;
+			children = (
+				38DAA9D72BCD4AB0002FE620 /* InitialListScreen.swift */,
+			);
+			path = CreateListing;
+			sourceTree = "<group>";
+		};
 		38FB350E2B51756B00E9DA40 = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +412,7 @@
 				38FB351A2B51756B00E9DA40 /* AppDelegate.swift */,
 				38FB351C2B51756B00E9DA40 /* SceneDelegate.swift */,
 				383F28492BA443D8002BEEB4 /* Network */,
+				38DAA9D32BCD48AD002FE620 /* Helper */,
 				38D20DBF2B55338700ECF628 /* Extentions */,
 				38D20DF32B6F861D00ECF628 /* Models */,
 				38FB35622B52D71600E9DA40 /* Scenes */,
@@ -410,7 +436,6 @@
 				38D20DD92B66F7A200ECF628 /* Home */,
 				38D20DDB2B66F7CA00ECF628 /* Discover */,
 				38D20DDD2B66F7DF00ECF628 /* Profile */,
-				38DAA9CE2BC7AB76002FE620 /* Settings */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -418,7 +443,7 @@
 		38FB35632B52DA5B00E9DA40 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				38FB351E2B51756B00E9DA40 /* FirstController.swift */,
+				38FB351E2B51756B00E9DA40 /* InitialController.swift */,
 				38D20DE82B6ADA4400ECF628 /* NumberScene */,
 				38D20DEB2B6ADC7000ECF628 /* OtpScene */,
 				38D20DEE2B6ADF4A00ECF628 /* AccountScene */,
@@ -601,7 +626,7 @@
 				38B6B8052B8D289C00A748F4 /* RentTypeCell.swift in Sources */,
 				38B6B80C2B8F868900A748F4 /* HomeViewModel.swift in Sources */,
 				383F28482BA44287002BEEB4 /* NetworkManager.swift in Sources */,
-				38FB351F2B51756B00E9DA40 /* FirstController.swift in Sources */,
+				38FB351F2B51756B00E9DA40 /* InitialController.swift in Sources */,
 				38D20E062B811C2200ECF628 /* FollowingsView.swift in Sources */,
 				38D20E0B2B813EB100ECF628 /* PostDiscoverView.swift in Sources */,
 				38D20DF72B6FA60400ECF628 /* ProfileHeaderView.swift in Sources */,
@@ -610,6 +635,7 @@
 				38D20DF02B6ADF7000ECF628 /* SelectAccountViewModel.swift in Sources */,
 				38D2529B2BAB0A59008D5771 /* HomeModel.swift in Sources */,
 				38D252952BA713CE008D5771 /* PropertyCell.swift in Sources */,
+				38DAA9D52BCD48CA002FE620 /* Coordinator.swift in Sources */,
 				38FB351B2B51756B00E9DA40 /* AppDelegate.swift in Sources */,
 				38D20DC52B58014600ECF628 /* OtpController.swift in Sources */,
 				38DAA9D02BC7AB99002FE620 /* SettingsController.swift in Sources */,
@@ -620,6 +646,7 @@
 				38B6B8102B98F37500A748F4 /* CategoryCell.swift in Sources */,
 				383F284B2BA443EF002BEEB4 /* NetworkHelper.swift in Sources */,
 				383F284D2BA4479C002BEEB4 /* Endpoints.swift in Sources */,
+				38DAA9D22BCAB434002FE620 /* UserStateObserver.swift in Sources */,
 				38D20DFD2B7C155600ECF628 /* PersonalAccountViewModel.swift in Sources */,
 				38D20DF92B7B7A5500ECF628 /* ReelsCollectionView.swift in Sources */,
 				38D20DDF2B66F81C00ECF628 /* HomeController.swift in Sources */,
@@ -629,6 +656,7 @@
 				383F284F2BA449F2002BEEB4 /* DiscoverModel.swift in Sources */,
 				38D252932BA70BE3008D5771 /* ErrorHandler.swift in Sources */,
 				38D20DD22B65A39700ECF628 /* AgentAccountController.swift in Sources */,
+				38DAA9D82BCD4AB0002FE620 /* InitialListScreen.swift in Sources */,
 				38D20DF52B6FA5B800ECF628 /* PostCell.swift in Sources */,
 				387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */,
 				387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */,

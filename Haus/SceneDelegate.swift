@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaults.standard.bool(forKey: "loggedIn") {
             switchToTabViewController()
         } else {
-            let firstController = FirstController()
+            let firstController = InitialController()
             let navigationController = UINavigationController(rootViewController: firstController)
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
@@ -30,6 +30,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("Switching to TabViewController")
         let tabViewController = TabViewController()
         window?.rootViewController = tabViewController
+        window?.makeKeyAndVisible()
+    }
+    
+    func switchToFirstScreen() {
+        let firstController = InitialController()
+        let navigationController = UINavigationController(rootViewController: firstController)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

@@ -2,7 +2,7 @@
 import UIKit
 import SnapKit
 
-class FirstController: UIViewController {
+class InitialController: UIViewController {
     
     let onboardingImg: UIImageView = {
         let image = UIImageView()

@@ -2,7 +2,7 @@
 
 import UIKit
 
-class PersonalPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+class PersonalPhotoController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UserStateObservable{
     
     var builder = UserBuilder()
     
@@ -152,12 +152,25 @@ class PersonalPhotoController: UIViewController, UIImagePickerControllerDelegate
         
         present(alertController, animated: true, completion: nil)
     }
-        
+    
     func goToAccountScreen() {
         UserDefaults.standard.setValue(true, forKey: "loggedIn")
+        UserStateObserver.shared.notifyLoginObservers()
         
         let scene = self.sceneDelegate
         scene?.switchToTabViewController()
+    }
+    
+    func didLogin() {
+        
+    }
+    
+    func didLogout() {
+        
+    }
+    
+    deinit {
+        UserStateObserver.shared.removeObserver(self)
     }
 }
 

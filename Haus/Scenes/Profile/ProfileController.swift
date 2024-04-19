@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import SnapKit
 
 class ProfileController: UIViewController {
@@ -15,7 +16,6 @@ class ProfileController: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: 165, height: 201)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -23,15 +23,21 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
         setupCollectionView()
         setupUI()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     private func setupUI() {
@@ -47,7 +53,6 @@ class ProfileController: UIViewController {
         collectionView.register(PostCell.self, forCellWithReuseIdentifier: "postCollectionCell")
         collectionView.register(ReelsCell.self, forCellWithReuseIdentifier: ReelsCell.identifier)
         collectionView.register(ProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(ProfileHeaderView.self)")
-        //postDiscoverView.delegate = collectionView.headerView
     }
 }
 
@@ -99,16 +104,32 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
         return headerView
     }
 }
-extension ProfileController: ProfileHeaderViewDelegate {
+extension ProfileController: ProfileHeaderViewDelegate{
+    
+    func didSelectSetting() {
+        
+        let vc = SettingsController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+        print(navigationController?.viewControllers.count ?? 0)
+        print(navigationController?.viewControllers ?? ProfileController())
+    }
+    
     func didSelectDiscoverButton() {
         isDiscoverButtonSelected = true
         collectionView.reloadData()
-        //postDiscoverView.didSelectDiscoverButton?()
     }
     
     func didSelectHomeButton() {
         isDiscoverButtonSelected = false
         collectionView.reloadData()
-        //postDiscoverView.didSelectHomeButton?()
     }
+    
+    func didSelectPlusButton() {
+        let initialListView = InitialListScreen()
+        let hostingController = UIHostingController(rootView: initialListView)
+        navigationController?.pushViewController(hostingController, animated: true)
+        
+    }
+    
 }

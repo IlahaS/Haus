@@ -1,6 +1,10 @@
 import UIKit
 
-class TitleView: UIView {    
+class TitleView: UIView {
+    
+    var settingsButtonTapped: (() -> Void)?
+    var plussButtonTapped: (() -> Void)?
+    
     private let headerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -24,21 +28,20 @@ class TitleView: UIView {
     
     private lazy var settingsButton: UIButton = {
         let button = UIButton()
-        
         button.setImage(UIImage(named: "setting"), for: .normal)
-        button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupHeaderView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupHeaderView() {
         addSubview(headerView)
         headerView.snp.makeConstraints { make in
@@ -66,11 +69,14 @@ class TitleView: UIView {
             make.trailing.equalTo(settingsButton.snp.leading).offset(-24)
         }
     }
+    
     @objc private func plusButtonTapped() {
+        plussButtonTapped?()
         print("plus button tapped")
     }
     
-    @objc private func settingsButtonTapped() {
-        
+    @objc private func settingButtonTapped() {
+        settingsButtonTapped?()
+        print("settings")
     }
 }
