@@ -126,10 +126,19 @@ extension ProfileController: ProfileHeaderViewDelegate{
     }
     
     func didSelectPlusButton() {
-        let initialListView = InitialListScreen()
-        let hostingController = UIHostingController(rootView: initialListView)
-        navigationController?.pushViewController(hostingController, animated: true)
+        let bottomSheet = BottomSheetViewController()
+        let navVC = UINavigationController(rootViewController: bottomSheet)
         
+        if let sheet = navVC.sheetPresentationController {
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom(resolver: { context in
+                    return 192
+                })]
+                sheet.prefersGrabberVisible = true
+            } else {
+            }
+        }
+        navigationController?.present(navVC, animated: true)
     }
-    
+
 }

@@ -5,6 +5,8 @@
 //  Created by Ilahe Samedova on 17.03.24.
 //
 
+//image-label-label -> naming
+
 import UIKit
 
 class LatestCell: UICollectionViewCell{

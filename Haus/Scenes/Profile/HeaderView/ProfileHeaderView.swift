@@ -88,7 +88,5 @@ class ProfileHeaderView: UICollectionReusableView {
     
     @objc private func didSelectPlusButton(){
         delegate?.didSelectPlusButton()
-        print("plus button tapped")
-
     }
 }

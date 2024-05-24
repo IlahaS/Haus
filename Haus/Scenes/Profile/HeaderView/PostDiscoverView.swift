@@ -46,7 +46,7 @@ class PostDiscoverView: UIView{
         button.setImage(UIImage(named: "HomeBlack")?.withRenderingMode(.alwaysTemplate).withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -spacing/2, bottom: 0, right: spacing/2)), for: .normal)
         
         //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing/2, bottom: 0, right: spacing/2)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing/2, bottom: 0, right: -spacing/2)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
         
         button.addTarget( self, action: #selector(homeButtonTapped), for: .touchUpInside)
         
@@ -62,9 +62,9 @@ class PostDiscoverView: UIView{
         
         let spacing: CGFloat = 6.0
         
-        button.setImage(UIImage(named: "DiscoverGray")?.withRenderingMode(.alwaysTemplate).withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -spacing/2, bottom: 0, right: spacing/2)), for: .normal)
+//        button.setImage(UIImage(named: "DiscoverGray")?.withRenderingMode(.alwaysTemplate).withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -spacing/2, bottom: 0, right: spacing/2)), for: .normal)
         
-        //button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing/2, bottom: 0, right: -spacing/2)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing/2, bottom: 0, right: -spacing/2)
         
         button.addTarget( self, action: #selector(discoverButtonTapped), for: .touchUpInside)
         

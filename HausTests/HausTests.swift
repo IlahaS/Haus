@@ -1,14 +1,13 @@
 //
-//  HousTests.swift
-//  HousTests
+//  HausTests.swift
+//  HausTests
 //
-//  Created by Ilahe Samedova on 12.01.24.
+//  Created by Ilahe Samedova on 20.05.24.
 //
 
 import XCTest
-@testable import Hous
 
-final class HousTests: XCTestCase {
+final class HausTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,7 +27,7 @@ final class HousTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
