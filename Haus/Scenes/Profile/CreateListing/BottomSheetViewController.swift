@@ -7,7 +7,14 @@
 import UIKit
 import SnapKit
 
+protocol BottomSheetViewControllerDelegate: AnyObject {
+    func bottomSheetDidDismiss()
+    func didTapHomeButton()
+}
+
 class BottomSheetViewController: UIViewController {
+    
+    weak var delegate: BottomSheetViewControllerDelegate?
     
     private lazy var homeButtonView: ImageButton = {
         let buttonView = ImageButton()
@@ -84,18 +91,17 @@ class BottomSheetViewController: UIViewController {
     }
     
     @objc func homeButtonTapped() {
-        print("home button tapped")
+        dismiss(animated: true) {
+            self.delegate?.didTapHomeButton()
+        }
     }
     
     @objc func discoverButtonTapped() {
         print("discover button tapped")
     }
-}
-
-extension UIImage {
-    func resized(to size: CGSize) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.bottomSheetDidDismiss()
     }
 }

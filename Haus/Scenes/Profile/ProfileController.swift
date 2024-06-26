@@ -1,10 +1,10 @@
 import UIKit
-import SwiftUI
 import SnapKit
 
 class ProfileController: UIViewController {
     
     private var isDiscoverButtonSelected = false
+    private var isOverlayShow = false
     
     var prices = ["26 000 AZN", "423 000 AZN", "55 000 AZN", "264 000 AZN", "2 444 000 AZN", "90 000 AZN"]
     var images = ["post1", "post2", "post3", "post4", "post1", "post2"]
@@ -21,15 +21,27 @@ class ProfileController: UIViewController {
         return collectionView
     }()
     
+    private lazy var overlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        view.alpha = 0
+        return view
+    }()
+    
+    private var statusBarView: UIView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        view.addSubview(overlayView)
+        overlayView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         setupCollectionView()
         setupUI()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,9 +55,9 @@ class ProfileController: UIViewController {
     private func setupUI() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let statusBarManager = windowScene.statusBarManager {
-            let statusBarView = UIView(frame: statusBarManager.statusBarFrame)
-            statusBarView.backgroundColor = .white
-            view.addSubview(statusBarView)
+            statusBarView = UIView(frame: statusBarManager.statusBarFrame)
+            statusBarView?.backgroundColor = .white
+            view.addSubview(statusBarView!)
         }
     }
     
@@ -104,15 +116,12 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
         return headerView
     }
 }
-extension ProfileController: ProfileHeaderViewDelegate{
+
+extension ProfileController: ProfileHeaderViewDelegate {
     
     func didSelectSetting() {
-        
         let vc = SettingsController()
         navigationController?.pushViewController(vc, animated: true)
-        
-        print(navigationController?.viewControllers.count ?? 0)
-        print(navigationController?.viewControllers ?? ProfileController())
     }
     
     func didSelectDiscoverButton() {
@@ -124,21 +133,55 @@ extension ProfileController: ProfileHeaderViewDelegate{
         isDiscoverButtonSelected = false
         collectionView.reloadData()
     }
-    
+
     func didSelectPlusButton() {
-        let bottomSheet = BottomSheetViewController()
-        let navVC = UINavigationController(rootViewController: bottomSheet)
+        isOverlayShow = true
+        showOverlay()
         
-        if let sheet = navVC.sheetPresentationController {
+        let bottomSheet = BottomSheetViewController()
+        bottomSheet.delegate = self
+        
+        if let sheet = bottomSheet.sheetPresentationController {
             if #available(iOS 16.0, *) {
-                sheet.detents = [.custom(resolver: { context in
-                    return 192
-                })]
+                sheet.detents = [.custom { context in
+                    return 170
+                }]
                 sheet.prefersGrabberVisible = true
-            } else {
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            } else if #available(iOS 15.0, *) {
+                sheet.detents = [.medium()]
+                sheet.prefersGrabberVisible = true
             }
         }
-        navigationController?.present(navVC, animated: true)
+        
+        present(bottomSheet, animated: true)
     }
+    
+    
+    private func showOverlay() {
+        isOverlayShow = true
+        statusBarView?.backgroundColor = .clear
+        UIView.animate(withDuration: 0.3) {
+            self.overlayView.alpha = 1
+        }
+    }
+    
+    private func hideOverlay() {
+        isOverlayShow = false
+        statusBarView?.backgroundColor = .white
+        UIView.animate(withDuration: 0.3) {
+            self.overlayView.alpha = 0
+        }
+    }
+}
 
+extension ProfileController: BottomSheetViewControllerDelegate {
+    func bottomSheetDidDismiss() {
+        hideOverlay()
+    }
+    
+    func didTapHomeButton() {
+        let createPostController = CreatePostController()
+        navigationController?.pushViewController(createPostController, animated: true)
+    }
 }

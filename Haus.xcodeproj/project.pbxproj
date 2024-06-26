@@ -20,6 +20,7 @@
 		386C8E912BF39BE1002BBE8C /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386C8E902BF39BE1002BBE8C /* ImageButton.swift */; };
 		387236C62B849E59008FB7FD /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C52B849E59008FB7FD /* DiscoverViewModel.swift */; };
 		387236C82B849F2E008FB7FD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387236C72B849F2E008FB7FD /* VideoCell.swift */; };
+		38A738582C270042008945DD /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A738572C270041008945DD /* CreatePostController.swift */; };
 		38B6B8052B8D289C00A748F4 /* RentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */; };
 		38B6B8092B8F849A00A748F4 /* SearchPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */; };
 		38B6B80C2B8F868900A748F4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B6B80B2B8F868900A748F4 /* HomeViewModel.swift */; };
@@ -103,6 +104,7 @@
 		386C8E902BF39BE1002BBE8C /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		387236C52B849E59008FB7FD /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		387236C72B849F2E008FB7FD /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		38A738572C270041008945DD /* CreatePostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
 		38B6B8042B8D289B00A748F4 /* RentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTypeCell.swift; sourceTree = "<group>"; };
 		38B6B8082B8F849A00A748F4 /* SearchPropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPropertyCell.swift; sourceTree = "<group>"; };
 		38B6B80B2B8F868900A748F4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 		38DAA9D62BCD4A8D002FE620 /* CreateListing */ = {
 			isa = PBXGroup;
 			children = (
+				38A738572C270041008945DD /* CreatePostController.swift */,
 				38DAA9D72BCD4AB0002FE620 /* BottomSheetViewController.swift */,
 				386C8E902BF39BE1002BBE8C /* ImageButton.swift */,
 			);
@@ -617,6 +620,7 @@
 				38FB351D2B51756B00E9DA40 /* SceneDelegate.swift in Sources */,
 				38D20DE52B684DDF00ECF628 /* UserBuilder.swift in Sources */,
 				38D20DD02B65A38400ECF628 /* PersonalAccountController.swift in Sources */,
+				38A738582C270042008945DD /* CreatePostController.swift in Sources */,
 				38B6B8102B98F37500A748F4 /* CategoryCell.swift in Sources */,
 				383F284B2BA443EF002BEEB4 /* NetworkHelper.swift in Sources */,
 				383F284D2BA4479C002BEEB4 /* Endpoints.swift in Sources */,

@@ -44,7 +44,6 @@ class ImageButton: UIView {
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview()
-            //make.size.equalTo(CGSize(width: 20, height: 20))
         }
         
         button.addSubview(titleLabel)
